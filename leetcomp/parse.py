@@ -37,24 +37,57 @@ class CompensationOffer(BaseModel):
     company: str = Field(description="Company name")
     role: str = Field(description="Job role/title")
     yoe: float = Field(description="Years of experience", ge=0, le=50)
-    base_offer: float = Field(
-        description="Base salary offer",
-        ge=config["parsing"]["min_base_offer"],
-        le=config["parsing"]["max_base_offer"],
-    )
-    total_offer: float = Field(
-        description="Total compensation offer",
-        ge=config["parsing"]["min_total_offer"],
-        le=config["parsing"]["max_total_offer"],
-    )
+    base_offer: float = Field(description="Base salary offer")
+    total_offer: float = Field(description="Total compensation offer")
     location: Optional[str] = Field(default="n/a", description="Job location")
     non_indian: Optional[str] = Field(
         default=None, description="Non-Indian candidate flag"
     )
 
-    @field_validator("non_indian")
+    @field_validator("base_offer")
     @classmethod
-    def validate_non_indian(cls, v: Optional[str]) -> Optional[str]:
+    def validate_base_offer(cls, v: float) -> float:
+        min_base = config["parsing"]["min_base_offer"]
+        max_base = config["parsing"]["max_base_offer"]
+
+        # If value is too large, it might be in absolute terms (lakhs)
+        # Try dividing by 100,000 to convert to lakhs
+        if v > max_base:
+            converted_v = v / 100000
+            if min_base <= converted_v <= max_base:
+                return converted_v
+
+        # Check if original value is in valid range
+        if min_base <= v <= max_base:
+            return v
+
+        raise ValueError(
+            f"base_offer {v} is out of range [{min_base}, {max_base}] even after conversion"
+        )
+
+    @field_validator("total_offer")
+    @classmethod
+    def validate_total_offer(cls, v: float) -> float:
+        min_total = config["parsing"]["min_total_offer"]
+        max_total = config["parsing"]["max_total_offer"]
+
+        # If value is too large, it might be in absolute terms (lakhs)
+        # Try dividing by 100,000 to convert to lakhs
+        if v > max_total:
+            converted_v = v / 100000
+            if min_total <= converted_v <= max_total:
+                return converted_v
+
+        # Check if original value is in valid range
+        if min_total <= v <= max_total:
+            return v
+
+        raise ValueError(
+            f"total_offer {v} is out of range [{min_total}, {max_total}] even after conversion"
+        )
+
+    @classmethod
+    def validate_non_indian(cls, v: str) -> str:
         if v == "yes":
             raise ValueError("non_indian cannot be 'yes'")
         return v
@@ -102,7 +135,7 @@ def post_should_be_parsed(post: dict[Any, Any]) -> bool:
 
 
 def has_crossed_till_date(
-    creation_date: str, till_date: Optional[datetime] = None
+    creation_date: str, till_date: datetime | None = None
 ) -> bool:
     """Check if post creation date has crossed the till_date threshold"""
     if till_date is None:
@@ -191,8 +224,8 @@ def fill_yoe(parsed_posts: list[dict[Any, Any]]) -> None:
 def parse_posts(
     in_comps_path: str,
     out_comps_path: str,
-    parsed_ids: Optional[set[int]] = None,
-    till_date: Optional[datetime] = None,
+    parsed_ids: set[int] | None = None,
+    till_date: datetime | None = None,
 ) -> None:
     """Main function to parse compensation posts using OpenAI structured output"""
     n_skips = 0
@@ -262,8 +295,8 @@ def cleanup_record(record: dict[Any, Any]) -> None:
 def mapped_record(
     item: str,
     mapping: dict[str, str],
-    default: Optional[str] = None,
-    extras: Optional[list[str]] = None,
+    default: str | None = None,
+    extras: list[str] | None = None,
 ) -> str:
     """Map item to standardized value using mapping dictionary"""
     item = item.lower()
