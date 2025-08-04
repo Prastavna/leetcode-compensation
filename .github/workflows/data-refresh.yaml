@@ -6,7 +6,8 @@ on:
     - cron: '00 22 * * 3,6'
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
   models: read
 
 jobs:
