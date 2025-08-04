@@ -56,7 +56,24 @@ def post_content(post_id: int) -> str:
             f"Invalid response data for post_id={post_id}"
         )
 
-    return str(data["topic"]["post"]["content"])
+    topic = data.get("topic")
+    if not topic:
+        raise FetchContentException(
+            f"No topic found for post_id={post_id}. Response: {data}"
+        )
+
+    post = topic.get("post")
+    if not post:
+        raise FetchContentException(
+            f"No post found in topic for post_id={post_id}. Topic: {topic}"
+        )
+
+    content = post.get("content")
+    if content is None:
+        print(f"Warning: Post {post_id} has no content")
+        return ""
+
+    return str(content)
 
 
 @retry_with_exp_backoff(retries=config["app"]["n_api_retries"])  # type: ignore
@@ -81,28 +98,35 @@ def parsed_posts(skip: int, first: int) -> Iterator[LeetCodePost]:
         posts = posts[1:]  # Skip pinned post
 
     for post in posts:
-        yield LeetCodePost(
-            id=post["node"]["id"],
-            title=post["node"]["title"],
-            content=str(post_content(post["node"]["id"])),
-            vote_count=post["node"]["post"]["voteCount"],
-            comment_count=post["node"]["commentCount"],
-            view_count=post["node"]["viewCount"],
-            creation_date=datetime.fromtimestamp(
-                post["node"]["post"]["creationDate"]
-            ),
-        )
+        try:
+            content = post_content(post["node"]["id"])
+            yield LeetCodePost(
+                id=post["node"]["id"],
+                title=post["node"]["title"],
+                content=content,
+                vote_count=post["node"]["post"]["voteCount"],
+                comment_count=post["node"]["commentCount"],
+                view_count=post["node"]["viewCount"],
+                creation_date=datetime.fromtimestamp(
+                    post["node"]["post"]["creationDate"]
+                ),
+            )
+        except FetchContentException as e:
+            print(
+                f"Warning: Skipping post {post['node']['id']} due to error: {e}"
+            )
+            continue
 
 
 def get_latest_posts(
-    comps_path: str, start_date: datetime, till_date: datetime
+    comps_path: str, start_date: datetime, till_date: datetime, max_records: int
 ) -> None:
     skip, first = 0, 50
     has_crossed_till_date = False
     fetched_posts, skips_due_to_lag = 0, 0
 
     with open(comps_path, "a") as f:
-        while not has_crossed_till_date:
+        while not has_crossed_till_date and fetched_posts < max_records:
             for post in parsed_posts(skip, first):  # type: ignore[unused-ignore]
                 if post.creation_date > start_date:
                     skips_due_to_lag += 1
@@ -110,6 +134,10 @@ def get_latest_posts(
 
                 if post.creation_date <= till_date:
                     has_crossed_till_date = True
+                    break
+
+                if fetched_posts >= max_records:
+                    print(f"Reached maximum record limit of {max_records}")
                     break
 
                 post_dict = asdict(post)
@@ -148,6 +176,13 @@ if __name__ == "__main__":
         default="",
         help="Fetch posts till this date (YYYY/MM/DD).",
     )
+    parser.add_argument(
+        "--max_records",
+        type=int,
+        default=config["app"]["max_fetch_recs"],
+        help="Maximum number of records to fetch per run.",
+    )
+
     args = parser.parse_args()
 
     if not args.till_date:
@@ -158,5 +193,5 @@ if __name__ == "__main__":
     print(f"Fetching posts till {till_date}...")
 
     start_date = datetime.now() - timedelta(days=config["app"]["lag_days"])
-    get_latest_posts(args.comps_path, start_date, till_date)
+    get_latest_posts(args.comps_path, start_date, till_date, args.max_records)
     sort_and_truncate(args.comps_path, truncate=True)
