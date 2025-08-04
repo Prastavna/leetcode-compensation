@@ -1,7 +1,7 @@
 // Constants and Variables
 const minDataPointsForBoxPlot = 2;
 const validYoeBucket = new Set(["Entry (0-1)", "Mid (2-6)", "Senior (7-10)", "Senior + (11+)"]);
-const offersPerPage = 10;
+let offersPerPage = 10;
 let currentPage = 1;
 let offers = [];
 let filteredOffers = [];
@@ -197,6 +197,25 @@ function getSortArrow(column) {
     }
     // Default state (no sorting)
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 24 24"><path d="M6 9l6-6 6 6z M18 15l-6 6-6-6z" fill="#000" /></svg>`;
+}
+
+function updateOffersPerPage(newValue) {
+    const previousOffersPerPage = offersPerPage;
+    offersPerPage = parseInt(newValue);
+
+    const currentFirstItem = (currentPage - 1) * previousOffersPerPage + 1;
+    currentPage = Math.ceil(currentFirstItem / offersPerPage);
+
+    totalPages = Math.ceil(filteredOffers.length / offersPerPage);
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+    if (currentPage < 1) {
+        currentPage = 1;
+    }
+
+    displayOffers(currentPage);
 }
 
 // Display and Sorting Functions
@@ -400,6 +419,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     mostOfferCompanies(filteredOffers);
     plotBoxPlot(filteredOffers, 'total', 'companyBoxPlot', 'company', new Set([]));
     plotBoxPlot(filteredOffers, 'total', 'yoeBucketBoxPlot', 'mapped_yoe', validYoeBucket);
+
+    // Offers per page select event listener
+    const offersPerPageSelect = document.getElementById('offersPerPageSelect');
+    if (offersPerPageSelect) {
+        offersPerPageSelect.addEventListener('change', (event) => {
+            updateOffersPerPage(event.target.value);
+        });
+    }
 
     // Pagination event listeners
     document.getElementById('prevPage').addEventListener('click', () => {

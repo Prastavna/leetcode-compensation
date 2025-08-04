@@ -43,9 +43,9 @@
         <div class="mt-3">
             <blockquote class="blockquote text-center" style="font-size: 16px;">
                 <div>Leetcode Compensation
-                    <a href="https://github.com/kuutsav/leetcode-compensation/stargazers">
+                    <a href="https://github.com/prastavna/leetcode-compensation/stargazers">
                         <img alt="star this repo"
-                            src="https://img.shields.io/github/stars/kuutsav/leetcode-compensation?=social">
+                            src="https://img.shields.io/github/stars/prastavna/leetcode-compensation?=social">
                     </a>
                 </div>
                 <footer class="blockquote-footer mt-0" style="font-size: 14px;">From
@@ -106,10 +106,18 @@
                         </div>
                     </div>
                 </div>
-
+                <select id="offersPerPageSelect" class="form-select form-select-sm ms-2" style="max-width: 72px;">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
             <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end justify-content-start mt-2 mt-md-0">
-                <select id="pageSelect" class="form-select form-select-sm" style="max-width: 72px;"></select>
+                <div class="d-flex align-items-center">
+                    <label for="pageSelect">Page:</label>
+                    <select id="pageSelect" class="form-select form-select-sm ms-2" style="max-width: 72px;"></select>
+                </div>
                 <button id="prevPage" class="ms-2 px-2 btn btn-secondary btn-sm">Previous</button>
                 <button id="nextPage" class="ms-2 px-2 btn btn-primary btn-sm">Next</button>
             </div>
