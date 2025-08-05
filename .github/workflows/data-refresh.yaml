@@ -73,7 +73,7 @@ jobs:
         branch: "data-refresh"
         delete-branch: true
         draft: false
-    
+
     - name: Auto-merge PR
       if: (steps.commit-files.outputs.skipnext != 'true')
       uses: "pascalgn/automerge-action@v0.15.6"
@@ -83,4 +83,3 @@ jobs:
         merge-method: squash
         pull-request-author: "github-actions[bot]"
         branch: "data-refresh"
-

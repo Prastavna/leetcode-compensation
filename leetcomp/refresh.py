@@ -119,25 +119,30 @@ def parsed_posts(skip: int, first: int) -> Iterator[LeetCodePost]:
 
 
 def get_latest_posts(
-    comps_path: str, start_date: datetime, till_date: datetime, max_records: int
+    comps_path: str,
+    start_date: datetime,
+    till_date: datetime,
+    max_fetch_records: int,
 ) -> None:
     skip, first = 0, 50
     has_crossed_till_date = False
     fetched_posts, skips_due_to_lag = 0, 0
 
     with open(comps_path, "a") as f:
-        while not has_crossed_till_date and fetched_posts < max_records:
+        while not has_crossed_till_date and fetched_posts < max_fetch_records:
             for post in parsed_posts(skip, first):  # type: ignore[unused-ignore]
                 if post.creation_date > start_date:
                     skips_due_to_lag += 1
                     continue
 
-                if post.creation_date <= till_date:
+                if post.creation_date >= till_date:
                     has_crossed_till_date = True
                     break
 
-                if fetched_posts >= max_records:
-                    print(f"Reached maximum record limit of {max_records}")
+                if fetched_posts >= max_fetch_records:
+                    print(
+                        f"Reached maximum record limit of {max_fetch_records}"
+                    )
                     break
 
                 post_dict = asdict(post)
@@ -173,11 +178,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--till_date",
         type=str,
-        default="",
+        default=datetime.now().strftime(config["app"]["date_fmt"]),
         help="Fetch posts till this date (YYYY/MM/DD).",
     )
     parser.add_argument(
-        "--max_records",
+        "--max_fetch_records",
         type=int,
         default=config["app"]["max_fetch_recs"],
         help="Maximum number of records to fetch per run.",
@@ -188,10 +193,12 @@ if __name__ == "__main__":
     if not args.till_date:
         till_date = latest_parsed_date(args.comps_path)
     else:
-        till_date = datetime.strptime(args.till_date, "%Y/%m/%d")
+        till_date = datetime.strptime(args.till_date, config["app"]["date_fmt"])
 
     print(f"Fetching posts till {till_date}...")
 
     start_date = datetime.now() - timedelta(days=config["app"]["lag_days"])
-    get_latest_posts(args.comps_path, start_date, till_date, args.max_records)
+    get_latest_posts(
+        args.comps_path, start_date, till_date, args.max_fetch_records
+    )
     sort_and_truncate(args.comps_path, truncate=True)
