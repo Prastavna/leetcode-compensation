@@ -97,6 +97,8 @@ class CompensationOffer(BaseModel):
     def validate_role(cls, v: str) -> str:
         if "intern" in v.lower():
             raise ValueError("intern roles are not supported")
+        if not v.strip():
+            raise ValueError("empty roles are not supported")
         return v
 
 
