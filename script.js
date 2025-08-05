@@ -470,6 +470,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             );
         }
 
+        if (globalFilterState.dateRange[0] !== null && globalFilterState.dateRange[1] !== null) {
+            tempFilteredOffers = tempFilteredOffers.filter(offer =>
+                offer.creation_date >= globalFilterState.dateRange[0] && offer.creation_date <= globalFilterState.dateRange[1]
+            );
+        }
+
         if (globalFilterState.includeInterviewExp) {
             tempFilteredOffers = tempFilteredOffers.filter(offer =>
                 offer.interview_exp !== "N/A"
@@ -495,9 +501,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         filterOffers(); // Call the unified filter function
     }
 
-    function filterMenu(yoeRange, salaryRange, includeInterviewExp) {
+    function filterMenu(yoeRange, salaryRange, dateRange, includeInterviewExp) {
         globalFilterState.yoeRange = yoeRange;
         globalFilterState.salaryRange = salaryRange;
+        globalFilterState.dateRange = dateRange;
         globalFilterState.includeInterviewExp = includeInterviewExp;
 
         filterOffers(); // Call the unified filter function
@@ -515,9 +522,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         const yoeMax = document.getElementById('yoeMax').value;
         const salaryMin = document.getElementById('salaryMin').value;
         const salaryMax = document.getElementById('salaryMax').value;
+        const dateMin = document.getElementById('dateMin').value;
+        const dateMax = document.getElementById('dateMax').value;
         const includeInterviewExp = document.getElementById('interviewExpFilterCheckbox').checked;
 
-        filterMenu([yoeMin, yoeMax], [salaryMin, salaryMax], includeInterviewExp);
+        filterMenu([yoeMin, yoeMax], [salaryMin, salaryMax], [dateMin, dateMax], includeInterviewExp);
     });
 
 
@@ -530,6 +539,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('salaryMin').value = 1;
         document.getElementById('salaryMax').value = 200;
 
+        // Clear date range inputs
+        document.getElementById('dateMin').value = '';
+        document.getElementById('dateMax').value = '';
+
         // Uncheck interview experience filter checkbox, if it exists
         const interviewExpCheckbox = document.getElementById('interviewExpFilterCheckbox');
         if (interviewExpCheckbox) {
@@ -539,6 +552,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Reset global filter state
         globalFilterState.yoeRange = [null, null];
         globalFilterState.salaryRange = [null, null];
+        globalFilterState.dateRange = [null, null];
         globalFilterState.includeInterviewExp = false;
 
         // Apply filter function with cleared filters
