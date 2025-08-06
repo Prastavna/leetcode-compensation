@@ -20,6 +20,7 @@ let globalFilterState = {
     searchString: '',
     yoeRange: [null, null], // Assuming null means no filter
     salaryRange: [null, null],
+    dateRange: [null, null],
     includeInterviewExp: false
 };
 
