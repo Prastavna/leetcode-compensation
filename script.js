@@ -20,7 +20,7 @@ let globalFilterState = {
     searchString: '',
     yoeRange: [null, null], // Assuming null means no filter
     salaryRange: [null, null],
-    dateRange: [null, null],
+    dateRange: ["", ""],
     includeInterviewExp: false
 };
 
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             );
         }
 
-        if (globalFilterState.dateRange[0] !== null && globalFilterState.dateRange[1] !== null) {
+        if (globalFilterState.dateRange[0] !== "" && globalFilterState.dateRange[1] !== "") {
             tempFilteredOffers = tempFilteredOffers.filter(offer =>
                 offer.creation_date >= globalFilterState.dateRange[0] && offer.creation_date <= globalFilterState.dateRange[1]
             );
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Reset global filter state
         globalFilterState.yoeRange = [null, null];
         globalFilterState.salaryRange = [null, null];
-        globalFilterState.dateRange = [null, null];
+        globalFilterState.dateRange = ["", ""];
         globalFilterState.includeInterviewExp = false;
 
         // Apply filter function with cleared filters
