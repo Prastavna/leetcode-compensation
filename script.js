@@ -282,7 +282,7 @@ function displayOffers(page) {
         idCell.innerHTML = `
         <p>
             <abbr title="attribute">
-                <a class="link-secondary" target="_blank" href="https://leetcode.com/discuss/compensation/${offer.id}">
+                <a class="link-secondary" target="_blank" href="https://leetcode.com/discuss/post/${offer.id}">
                     ${offer.id}
                 </a>
             </abbr>
@@ -320,6 +320,7 @@ function displayOffers(page) {
     });
 
     const container = document.getElementById('offersTable');
+    container.style.overflow = 'auto';
     container.innerHTML = '';
     container.appendChild(table);
     renderPageOptions();
