@@ -1,18 +1,14 @@
 import json
 import os
-import re
 from datetime import datetime
-from typing import Any, Generator, List, Optional
+from typing import List, Optional, Any
+import re
+from pathlib import Path
 
 from openai import OpenAI
 from pydantic import BaseModel, Field, field_validator
 
-from leetcomp.utils import (
-    config,
-    latest_parsed_date,
-    mapping,
-    sort_and_truncate,
-)
+from utils import config, sort_and_truncate, latest_parsed_date
 
 client = OpenAI(
     base_url="https://models.github.ai/inference",
@@ -30,257 +26,11 @@ yoe_map: dict[tuple[int, int], str] = {
     (11, 30): "Senior + (11+)",
 }
 
-
-class CompensationOffer(BaseModel):
-    """Single compensation offer from a LeetCode post"""
-
-    company: str = Field(description="Company name")
-    role: str = Field(description="Job role/title")
-    yoe: float = Field(description="Years of experience", ge=0, le=50)
-    base_offer: float = Field(description="Base salary offer")
-    total_offer: float = Field(description="Total compensation offer")
-    location: Optional[str] = Field(default="n/a", description="Job location")
-    non_indian: Optional[str] = Field(
-        default=None, description="Non-Indian candidate flag"
-    )
-
-    @field_validator("base_offer")
-    @classmethod
-    def validate_base_offer(cls, v: float) -> float:
-        min_base = config["parsing"]["min_base_offer"]
-        max_base = config["parsing"]["max_base_offer"]
-
-        # If value is too large, it might be in absolute terms (lakhs)
-        # Try dividing by 100,000 to convert to lakhs
-        if v > max_base:
-            converted_v = v / 100000
-            if min_base <= converted_v <= max_base:
-                return converted_v
-
-        # Check if original value is in valid range
-        if min_base <= v <= max_base:
-            return v
-
-        raise ValueError(
-            f"base_offer {v} is out of range [{min_base}, {max_base}] even after conversion"
-        )
-
-    @field_validator("total_offer")
-    @classmethod
-    def validate_total_offer(cls, v: float) -> float:
-        min_total = config["parsing"]["min_total_offer"]
-        max_total = config["parsing"]["max_total_offer"]
-
-        # If value is too large, it might be in absolute terms (lakhs)
-        # Try dividing by 100,000 to convert to lakhs
-        if v > max_total:
-            converted_v = v / 100000
-            if min_total <= converted_v <= max_total:
-                return converted_v
-
-        # Check if original value is in valid range
-        if min_total <= v <= max_total:
-            return v
-
-        raise ValueError(
-            f"total_offer {v} is out of range [{min_total}, {max_total}] even after conversion"
-        )
-
-    @classmethod
-    def validate_non_indian(cls, v: str) -> str:
-        if v == "yes":
-            raise ValueError("non_indian cannot be 'yes'")
-        return v
-
-    @field_validator("role")
-    @classmethod
-    def validate_role(cls, v: str) -> str:
-        if "intern" in v.lower():
-            raise ValueError("intern roles are not supported")
-        if not v.strip():
-            raise ValueError("empty roles are not supported")
-        return v
-
-
-class CompensationOffers(BaseModel):
-    """Multiple compensation offers from a single LeetCode post"""
-
-    offers: List[CompensationOffer] = Field(
-        description="List of compensation offers"
-    )
-
-    @field_validator("offers")
-    @classmethod
-    def validate_offers(
-        cls, v: List[CompensationOffer]
-    ) -> List[CompensationOffer]:
-        if not v:
-            raise ValueError("At least one offer must be provided")
-        return v
-
-
-def post_should_be_parsed(post: dict[Any, Any]) -> bool:
-    """Check if a post should be parsed based on basic criteria"""
-    if "title" not in post:
-        print(f" x skipping {post['id']}; no title")
-        return False
-    if "|" not in post["title"]:
-        print(f" x skipping {post['id']}; | not in title")
-        return False
-    if "vote_count" not in post:
-        print(f" x skipping {post['id']}; no vote_count")
-        return False
-    if post["vote_count"] < 0:
-        print(f" x skipping {post['id']}; negative vote_count")
-        return False
-    return True
-
-
-def has_crossed_till_date(
-    creation_date: str, till_date: datetime | None = None
-) -> bool:
-    """Check if post creation date has crossed the till_date threshold"""
-    if till_date is None:
-        return False
-
-    dt = datetime.strptime(creation_date, config["app"]["date_fmt"])
-    return dt <= till_date
-
-
-def comps_posts_iter(comps_path: str) -> Generator[dict[Any, Any], None, None]:
-    """Iterator over compensation posts from JSONL file"""
-    with open(comps_path, "r") as f:
-        for line in f:
-            yield json.loads(line)
-
-
-def parse_compensation_with_openai(
-    post_content: str,
-) -> Optional[CompensationOffers]:
-    """Parse compensation data using OpenAI structured output"""
-    try:
-        response = client.chat.completions.parse(
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post.",
-                },
-                {
-                    "role": "user",
-                    "content": post_content,
-                },
-            ],
-            model="openai/gpt-4o-mini",
-            temperature=0.1,  # Low temperature for consistency
-            max_tokens=4096 * 2,
-            top_p=1,
-            response_format=CompensationOffers,
-        )
-
-        return response.choices[0].message.parsed
-    except Exception as e:
-        print(f" x OpenAI parsing error: {str(e)}")
-        return None
-
-
 def extract_interview_exp(content: str) -> str:
-    """Extract interview experience URL from post content"""
     match = interview_exp_pattern.search(content)
     return match.group(0) if match else "N/A"
 
-
-def get_parsed_posts(
-    raw_post: dict[Any, Any], compensation_offers: CompensationOffers
-) -> list[dict[Any, Any]]:
-    """Convert structured compensation offers to parsed post format"""
-    parsed_posts = []
-
-    for offer in compensation_offers.offers:
-        parsed_post = {
-            "id": raw_post["id"],
-            "vote_count": raw_post["vote_count"],
-            "comment_count": raw_post["comment_count"],
-            "view_count": raw_post["view_count"],
-            "creation_date": raw_post["creation_date"],
-            "company": offer.company,
-            "role": offer.role,
-            "yoe": offer.yoe,
-            "base_offer": offer.base_offer,
-            "total_offer": offer.total_offer,
-            "location": offer.location or "n/a",
-            "interview_exp": extract_interview_exp(raw_post["content"]),
-        }
-        parsed_posts.append(parsed_post)
-
-    return parsed_posts
-
-
-def fill_yoe(parsed_posts: list[dict[Any, Any]]) -> None:
-    """Fill YOE for subsequent offers if multiple offers exist"""
-    if len(parsed_posts) > 1:
-        first_yoe = parsed_posts[0]["yoe"]
-        for post in parsed_posts[1:]:
-            post["yoe"] = first_yoe
-
-
-def parse_posts(
-    in_comps_path: str,
-    out_comps_path: str,
-    parsed_ids: set[int] | None = None,
-    till_date: datetime | None = None,
-) -> None:
-    """Main function to parse compensation posts using OpenAI structured output"""
-    n_skips = 0
-    n_parsed = 0
-    parsed_ids = parsed_ids or set()
-
-    for i, post in enumerate(comps_posts_iter(in_comps_path), start=1):
-        if i % 20 == 0:
-            print(f"Processed {i} posts; {n_parsed} parsed; {n_skips} skips")
-
-        if post["id"] in parsed_ids or not post_should_be_parsed(post):
-            n_skips += 1
-            continue
-
-        if has_crossed_till_date(post["creation_date"], till_date):
-            break
-
-        # Prepare input for OpenAI
-        input_text = f"{post['title']}\n---\n{post['content']}"
-
-        # Parse using OpenAI structured output
-        compensation_offers = parse_compensation_with_openai(input_text)
-
-        if compensation_offers and compensation_offers.offers:
-            # Convert to the expected format
-            parsed_posts = get_parsed_posts(post, compensation_offers)
-            fill_yoe(parsed_posts)
-
-            # Write to output file
-            with open(out_comps_path, "a") as f:
-                for parsed_post in parsed_posts:
-                    f.write(json.dumps(parsed_post) + "\n")
-
-            n_parsed += 1
-            print(f" ✓ parsed {post['id']} -> {len(parsed_posts)} offers")
-        else:
-            n_skips += 1
-            print(f" x failed to parse {post['id']}")
-
-    print(f"Parsing complete: {n_parsed} posts parsed, {n_skips} skipped")
-
-
-def get_parsed_ids(out_comps_path: str) -> set[int]:
-    """Get set of already parsed post IDs"""
-    if not os.path.exists(out_comps_path):
-        return set()
-
-    with open(out_comps_path, "r") as f:
-        return {json.loads(line)["id"] for line in f}
-
-
 def cleanup_record(record: dict[Any, Any]) -> None:
-    """Clean up and format record for final output"""
     record.pop("vote_count", None)
     record.pop("comment_count", None)
     record.pop("view_count", None)
@@ -293,14 +43,12 @@ def cleanup_record(record: dict[Any, Any]) -> None:
     record.pop("base_offer", None)
     record.pop("total_offer", None)
 
-
 def mapped_record(
     item: str,
     mapping: dict[str, str],
     default: str | None = None,
     extras: list[str] | None = None,
 ) -> str:
-    """Map item to standardized value using mapping dictionary"""
     item = item.lower()
     if extras:
         for role_str in extras:
@@ -309,9 +57,7 @@ def mapped_record(
 
     return mapping.get(item, default or item.capitalize())
 
-
 def map_location(location: str, location_map: dict[str, str]) -> str:
-    """Map location to standardized value"""
     location = location.lower()
 
     if location == "n/a":
@@ -330,18 +76,33 @@ def map_location(location: str, location_map: dict[str, str]) -> str:
 
     return location_map.get(location, location.capitalize())
 
-
 def map_yoe(yoe: int, yoe_map: dict[tuple[int, int], str]) -> str:
-    """Map years of experience to category"""
     for (start, end), mapped_yoe in yoe_map.items():
         if start <= yoe <= end:
             return mapped_yoe
 
     return "Senior +"
 
+def mapping(map_path: str | Path) -> dict[str, str]:
+    try:
+        with open(map_path, "r") as f:
+            data = json.load(f)
+
+        mapping_dict = {}
+        for d in data:
+            if "cluster" in d and "cluster_name" in d:
+                for item in d["cluster"]:
+                    mapping_dict[item] = d["cluster_name"]
+            else:
+                print(f"Warning: Invalid mapping entry: {d}")
+
+        return mapping_dict
+
+    except Exception as e:
+        print(f"Error loading mapping from {map_path}: {e}")
+        return {}
 
 def jsonl_to_json(jsonl_path: str, json_path: str) -> None:
-    """Convert JSONL to JSON with mappings applied"""
     company_map = mapping(config["app"]["data_dir"] / "company_map.json")
     role_map = mapping(config["app"]["data_dir"] / "role_map.json")
     location_map = mapping(config["app"]["data_dir"] / "location_map.json")
@@ -368,50 +129,179 @@ def jsonl_to_json(jsonl_path: str, json_path: str) -> None:
 
     print(f"Converted {len(records)} records!")
 
+class CompensationOffer(BaseModel):
+    company: str = Field(description="Company name")
+    role: str = Field(description="Job role/title")
+    yoe: float = Field(description="Years of experience", ge=0, le=50)
+    base_offer: float = Field(description="Base salary offer")
+    total_offer: float = Field(description="Total compensation offer")
+    location: Optional[str] = Field(default="n/a", description="Job location")
+
+    @field_validator("company")
+    @classmethod
+    def validate_company(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("empty company name is not supported")
+        return v
+
+    @field_validator("role")
+    @classmethod
+    def validate_role(cls, v: str) -> str:
+        if "intern" in v.lower():
+            raise ValueError("intern roles are not supported")
+        if not v.strip():
+            raise ValueError("empty roles are not supported")
+        return v
+
+    @field_validator("base_offer")
+    @classmethod
+    def validate_base_offer(cls, v: float) -> float:
+        min_base = config["parsing"]["min_base_offer"]
+        max_base = config["parsing"]["max_base_offer"]
+
+        # If value is too large, it might be in absolute terms (lakhs)
+        # Try dividing by 100,000 to convert to lakhs
+        if v > max_base:
+            converted_v = v / 100000
+            if min_base <= converted_v <= max_base:
+                return converted_v
+
+        if min_base <= v <= max_base:
+            return v
+
+        raise ValueError(
+            f"base_offer {v} is out of range [{min_base}, {max_base}] even after conversion"
+        )
+
+    @field_validator("total_offer")
+    @classmethod
+    def validate_total_offer(cls, v: float) -> float:
+        min_total = config["parsing"]["min_total_offer"]
+        max_total = config["parsing"]["max_total_offer"]
+
+        # If value is too large, it might be in absolute terms (lakhs)
+        # Try dividing by 100,000 to convert to lakhs
+        if v > max_total:
+            converted_v = v / 100000
+            if min_total <= converted_v <= max_total:
+                return converted_v
+
+        if min_total <= v <= max_total:
+            return v
+
+        raise ValueError(
+            f"total_offer {v} is out of range [{min_total}, {max_total}] even after conversion"
+        )
+
+class CompensationOffers(BaseModel):
+    offers: List[CompensationOffer] = Field(description="List of compensation offers")
+
+    @field_validator("offers")
+    @classmethod
+    def validate_offers(cls, v: List[CompensationOffer]) -> List[CompensationOffer]:
+        if not v:
+            raise ValueError("At least one offer must be provided")
+        return v
+
+def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOffers]:
+    try:
+        response = client.chat.completions.parse(
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field.",
+                },
+                {
+                    "role": "user",
+                    "content": post_content,
+                },
+            ],
+            model="openai/gpt-4o-mini",
+            temperature=0.1,
+            max_tokens=4096 * 2,
+            top_p=1,
+            response_format=CompensationOffers,
+        )
+        return response.choices[0].message.parsed
+    except Exception as e:
+        print(f"OpenAI parsing error: {str(e)}")
+        return None
+
+def get_existing_parsed_ids(filepath: str) -> set:
+    if not os.path.exists(filepath):
+        return set()
+    
+    existing_ids = set()
+    with open(filepath, "r") as f:
+        for line in f:
+            if line.strip():
+                data = json.loads(line)
+                existing_ids.add(data["id"])
+    return existing_ids
+
+def create_parsed_record(raw_post: dict, offer: CompensationOffer) -> dict:
+    return {
+        "id": raw_post["id"],
+        "vote_count": raw_post["vote_count"],
+        "comment_count": raw_post["comment_count"],
+        "view_count": raw_post["view_count"],
+        "creation_date": raw_post["creation_date"],
+        "company": offer.company,
+        "role": offer.role,
+        "yoe": offer.yoe,
+        "base_offer": offer.base_offer,
+        "total_offer": offer.total_offer,
+        "location": offer.location or "n/a",
+        "interview_exp": extract_interview_exp(raw_post["content"]),
+    }
+
+def has_crossed_till_date(creation_date: str, till_date) -> bool:
+    if till_date is None:
+        return False
+    dt = datetime.strptime(creation_date, config["app"]["date_fmt"])
+    return dt <= till_date
+
+def parse_posts(input_file: str, output_file: str):
+    existing_parsed_ids = get_existing_parsed_ids(output_file)
+    till_date = latest_parsed_date(output_file)
+    
+    parsed_count = 0
+    failed_count = 0
+    
+    with open(input_file, "r") as infile, open(output_file, "a") as outfile:
+        for line in infile:
+            if not line.strip():
+                continue
+                
+            raw_post = json.loads(line)
+            post_id = raw_post["id"]
+            
+            if post_id in existing_parsed_ids:
+                continue
+                
+            if has_crossed_till_date(raw_post["creation_date"], till_date):
+                break
+            
+            input_text = f"{raw_post['title']}\n---\n{raw_post['content']}"
+            compensation_offers = parse_compensation_with_openai(input_text)
+            
+            if compensation_offers and compensation_offers.offers:
+                for offer in compensation_offers.offers:
+                    parsed_record = create_parsed_record(raw_post, offer)
+                    outfile.write(json.dumps(parsed_record) + "\n")
+                    outfile.flush()
+                
+                parsed_count += 1
+                print(f"Parsed post {post_id}: {len(compensation_offers.offers)} offers")
+            else:
+                failed_count += 1
+                print(f"Failed to parse post {post_id}")
+    
+    print(f"Parsing complete: {parsed_count} posts parsed, {failed_count} failed")
+    sort_and_truncate(output_file)
+    jsonl_to_json(str(output_file), str(config["app"]["data_dir"] / "parsed_comps.json"))
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(
-        description="Parse LeetCode Compensations posts using OpenAI structured output."
-    )
-    parser.add_argument(
-        "--in_comps_path",
-        type=str,
-        default=config["app"]["data_dir"] / "raw_comps.jsonl",
-        help="Path to the file to store posts.",
-    )
-    parser.add_argument(
-        "--out_comps_path",
-        type=str,
-        default=config["app"]["data_dir"] / "parsed_comps.jsonl",
-        help="Path to the file to store parsed posts.",
-    )
-    parser.add_argument(
-        "--json_path",
-        type=str,
-        default=config["app"]["data_dir"] / "parsed_comps.json",
-        help="Path to the file to store parsed posts in JSON format.",
-    )
-    args = parser.parse_args()
-
-    print(
-        f"Parsing comps from {args.in_comps_path} using OpenAI structured output..."
-    )
-
-    parsed_ids = (
-        get_parsed_ids(args.out_comps_path)
-        if os.path.exists(args.out_comps_path)
-        else set()
-    )
-    print(f"Found {len(parsed_ids)} parsed ids...")
-
-    till_date = (
-        latest_parsed_date(args.out_comps_path)
-        if os.path.exists(args.out_comps_path)
-        else None
-    )
-
-    parse_posts(args.in_comps_path, args.out_comps_path, parsed_ids, till_date)
-    sort_and_truncate(args.out_comps_path, truncate=True)
-    jsonl_to_json(args.out_comps_path, args.json_path)
+    input_file = config["app"]["data_dir"] / "raw_comps.jsonl"
+    output_file = config["app"]["data_dir"] / "parsed_comps.jsonl"
+    parse_posts(str(input_file), str(output_file))
