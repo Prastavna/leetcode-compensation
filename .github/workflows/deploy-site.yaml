@@ -2,6 +2,8 @@ name: deploy-site
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'index.html'
       - 'script.js'
