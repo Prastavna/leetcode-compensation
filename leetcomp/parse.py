@@ -15,20 +15,12 @@ client = OpenAI(
     api_key=os.getenv("GITHUB_TOKEN"),
 )
 
-interview_exp_pattern = re.compile(
-    r"https://leetcode.com/discuss/interview-experience/\S+"
-)
-
 yoe_map: dict[tuple[int, int], str] = {
     (0, 1): "Entry (0-1)",
     (2, 6): "Mid (2-6)",
     (7, 10): "Senior (7-10)",
     (11, 30): "Senior + (11+)",
 }
-
-def extract_interview_exp(content: str) -> str:
-    match = interview_exp_pattern.search(content)
-    return match.group(0) if match else "N/A"
 
 def cleanup_record(record: dict[Any, Any]) -> None:
     record.pop("vote_count", None)
@@ -136,6 +128,7 @@ class CompensationOffer(BaseModel):
     base_offer: float = Field(description="Base salary offer")
     total_offer: float = Field(description="Total compensation offer")
     location: Optional[str] = Field(default="n/a", description="Job location")
+    interview_exp: Optional[str] = Field(default="n/a", description="Interview experience")
 
     @field_validator("company")
     @classmethod
@@ -193,6 +186,13 @@ class CompensationOffer(BaseModel):
             f"total_offer {v} is out of range [{min_total}, {max_total}] even after conversion"
         )
 
+    @field_validator("interview_exp")
+    @classmethod
+    def validate_interview_exp(cls, v: str) -> str:
+        if not v.strip():
+            return "n/a"
+        return v
+
 class CompensationOffers(BaseModel):
     offers: List[CompensationOffer] = Field(description="List of compensation offers")
 
@@ -209,7 +209,7 @@ def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOf
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field.",
+                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field. Interview experience is a link to leetcode post. If no interview experience is mentioned, return empty string for that field.",
                 },
                 {
                     "role": "user",
@@ -252,7 +252,7 @@ def create_parsed_record(raw_post: dict, offer: CompensationOffer) -> dict:
         "base_offer": offer.base_offer,
         "total_offer": offer.total_offer,
         "location": offer.location or "n/a",
-        "interview_exp": extract_interview_exp(raw_post["content"]),
+        "interview_exp": offer.interview_exp,
     }
 
 def has_crossed_till_date(creation_date: str, till_date) -> bool:
