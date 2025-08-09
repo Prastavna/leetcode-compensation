@@ -1,20 +1,16 @@
 import json
+import os
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta
-from typing import Any, Iterator
+from typing import List, Optional
 
-import requests  # type: ignore
+from gql import Client, gql
+from gql.transport.requests import RequestsHTTPTransport
 
-from leetcomp.errors import FetchContentException, FetchPostsException
-from leetcomp.queries import COMP_POST_CONTENT_DATA_QUERY as content_query
-from leetcomp.queries import COMP_POSTS_DATA_QUERY as posts_query
-from leetcomp.utils import (
-    config,
-    latest_parsed_date,
-    retry_with_exp_backoff,
-    sort_and_truncate,
-)
+from utils import config, retry_with_exp_backoff, sort_and_truncate, latest_parsed_date
 
+LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql"
+LAG_DAYS = 3
 
 @dataclass
 class LeetCodePost:
@@ -24,181 +20,142 @@ class LeetCodePost:
     vote_count: int
     comment_count: int
     view_count: int
-    creation_date: datetime
+    creation_date: str
 
+class LeetCodeFetcher:
+    def __init__(self):
+        transport = RequestsHTTPTransport(url=LEETCODE_GRAPHQL_URL)
+        self.client = Client(transport=transport)
+        
+        with open("queries/discussion_post_items.gql", "r") as f:
+            self.posts_query = gql(f.read())
+        
+        with open("queries/post_details.gql", "r") as f:
+            self.details_query = gql(f.read())
 
-def get_posts_query(skip: int, first: int) -> dict[Any, Any]:
-    query = posts_query.copy()
-    query["variables"]["skip"] = skip  # type: ignore
-    query["variables"]["first"] = first  # type: ignore
-    return query
+    @retry_with_exp_backoff(retries=3)
+    def fetch_posts_list(self, skip: int = 0, first: int = 50) -> List[dict]:
+        result = self.client.execute(self.posts_query, variable_values={
+            "orderBy": "MOST_RECENT",
+            "keywords": [],
+            "tagSlugs": ["compensation"],
+            "skip": skip,
+            "first": first
+        })
+        return result["ugcArticleDiscussionArticles"]["edges"]
 
+    @retry_with_exp_backoff(retries=3)
+    def fetch_post_details(self, topic_id: str) -> dict:
+        result = self.client.execute(self.details_query, variable_values={
+            "topicId": topic_id
+        })
+        return result["ugcArticleDiscussionArticle"]
 
-def get_content_query(post_id: int) -> dict[Any, Any]:
-    query = content_query.copy()
-    query["variables"]["topicId"] = post_id  # type: ignore
-    return query
-
-
-@retry_with_exp_backoff(retries=config["app"]["n_api_retries"])  # type: ignore
-def post_content(post_id: int) -> str:
-    query = get_content_query(post_id)
-    response = requests.post(config["app"]["leetcode_graphql_url"], json=query)
-
-    if response.status_code != 200:
-        raise FetchContentException(
-            f"Failed to fetch content for post_id={post_id}): {response.text}"
+    def parse_post_data(self, post_data: dict) -> LeetCodePost:
+        upvotes=[r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"][0]["count"] if [r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"] else 0
+        downvotes=[r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"][0]["count"] if [r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"] else 0
+        
+        creation_date = datetime.fromisoformat(post_data["createdAt"].replace('Z', '+00:00'))
+        formatted_date = creation_date.strftime(config["app"]["date_fmt"])
+        
+        return LeetCodePost(
+            id=post_data["topic"]["id"],
+            title=post_data["title"],
+            content=post_data["content"],
+            vote_count=upvotes - downvotes,
+            comment_count=post_data["topic"]["topLevelCommentCount"],
+            view_count=post_data["hitCount"],
+            creation_date=formatted_date
         )
 
-    data = response.json().get("data")
-    if not data:
-        raise FetchContentException(
-            f"Invalid response data for post_id={post_id}"
-        )
+    def should_parse_post(self, post: LeetCodePost) -> bool:
+        if "|" not in post.title:
+            return False
+        if post.vote_count < 0:
+            return False
+        return True
 
-    topic = data.get("topic")
-    if not topic:
-        raise FetchContentException(
-            f"No topic found for post_id={post_id}. Response: {data}"
-        )
+def has_crossed_till_date(creation_date: str, till_date) -> bool:
+    if till_date is None:
+        return False
+    dt = datetime.strptime(creation_date, config["app"]["date_fmt"])
+    return dt <= till_date
 
-    post = topic.get("post")
-    if not post:
-        raise FetchContentException(
-            f"No post found in topic for post_id={post_id}. Topic: {topic}"
-        )
+def is_within_lag_period(creation_date: str) -> bool:
+    post_date = datetime.strptime(creation_date, config["app"]["date_fmt"])
+    lag_cutoff = datetime.now() - timedelta(days=LAG_DAYS)
+    return post_date > lag_cutoff
 
-    content = post.get("content")
-    if content is None:
-        print(f"Warning: Post {post_id} has no content")
-        return ""
+def get_existing_ids(filepath: str) -> set:
+    if not os.path.exists(filepath):
+        return set()
+    
+    existing_ids = set()
+    with open(filepath, "r") as f:
+        for line in f:
+            if line.strip():
+                data = json.loads(line)
+                existing_ids.add(data["id"])
+    return existing_ids
 
-    return str(content)
-
-
-@retry_with_exp_backoff(retries=config["app"]["n_api_retries"])  # type: ignore
-def parsed_posts(skip: int, first: int) -> Iterator[LeetCodePost]:
-    query = get_posts_query(skip, first)
-    response = requests.post(config["app"]["leetcode_graphql_url"], json=query)
-
-    if response.status_code != 200:
-        raise FetchPostsException(
-            f"Failed to fetch content for skip={skip}, first={first}): {response.text}"
-        )
-
-    data = response.json().get("data")
-    if not data:
-        raise FetchPostsException(
-            f"Invalid response data for skip={skip}, first={first}"
-        )
-
-    posts = data["categoryTopicList"]["edges"]
-
-    if skip == 0:
-        posts = posts[1:]  # Skip pinned post
-
-    for post in posts:
-        try:
-            content = post_content(post["node"]["id"])
-            yield LeetCodePost(
-                id=post["node"]["id"],
-                title=post["node"]["title"],
-                content=content,
-                vote_count=post["node"]["post"]["voteCount"],
-                comment_count=post["node"]["commentCount"],
-                view_count=post["node"]["viewCount"],
-                creation_date=datetime.fromtimestamp(
-                    post["node"]["post"]["creationDate"]
-                ),
-            )
-        except FetchContentException as e:
-            print(
-                f"Warning: Skipping post {post['node']['id']} due to error: {e}"
-            )
-            continue
-
-
-def get_latest_posts(
-    comps_path: str,
-    start_date: datetime,
-    till_date: datetime,
-    max_fetch_records: int,
-) -> None:
-    skip, first = 0, 50
-    has_crossed_till_date = False
-    fetched_posts, skips_due_to_lag = 0, 0
-
-    with open(comps_path, "a") as f:
-        while not has_crossed_till_date and fetched_posts < max_fetch_records:
-            for post in parsed_posts(skip, first):  # type: ignore[unused-ignore]
-                if post.creation_date > start_date:
-                    skips_due_to_lag += 1
+def refresh_posts(output_file: str, max_posts: int = 100):
+    fetcher = LeetCodeFetcher()
+    existing_ids = get_existing_ids(output_file)
+    till_date = latest_parsed_date(output_file)
+    
+    skip = 0
+    first = 50
+    new_posts_count = 0
+    skipped_due_to_lag = 0
+    
+    with open(output_file, "a") as f:
+        while new_posts_count < max_posts:
+            posts_list = fetcher.fetch_posts_list(skip, first)
+            
+            if not posts_list:
+                break
+                
+            for post_edge in posts_list:
+                topic_id = post_edge["node"]["topicId"]
+                
+                if topic_id in existing_ids:
                     continue
-
-                if post.creation_date >= till_date:
-                    has_crossed_till_date = True
-                    break
-
-                if fetched_posts >= max_fetch_records:
-                    print(
-                        f"Reached maximum record limit of {max_fetch_records}"
-                    )
-                    break
-
-                post_dict = asdict(post)
-                post_dict["creation_date"] = post.creation_date.strftime(
-                    config["app"]["date_fmt"]
-                )
-                f.write(json.dumps(post_dict) + "\n")
-                fetched_posts += 1
-
-                if fetched_posts % 10 == 0:
-                    print(
-                        f"{post.creation_date} Fetched {fetched_posts} posts..."
-                    )
-
+                
+                try:
+                    post_details = fetcher.fetch_post_details(topic_id)
+                    post = fetcher.parse_post_data(post_details)
+                    
+                    if has_crossed_till_date(post.creation_date, till_date):
+                        print(f"Reached posts older than {till_date}, stopping...")
+                        break
+                    
+                    if is_within_lag_period(post.creation_date):
+                        skipped_due_to_lag += 1
+                        continue
+                    
+                    if fetcher.should_parse_post(post):
+                        f.write(json.dumps(asdict(post)) + "\n")
+                        f.flush()
+                        new_posts_count += 1
+                        print(f"Fetched post {topic_id} from {post.creation_date}: {post.title[:50]}...")
+                        
+                        if new_posts_count >= max_posts:
+                            break
+                
+                except Exception as e:
+                    print(f"Error fetching post {topic_id}: {e}")
+                    continue
+            
             skip += first
-
-        print(f"Skipped {skips_due_to_lag} posts due to lag...")
-        print(f"{post.creation_date} Fetched {fetched_posts} posts in total!")
-
+            
+            if len(posts_list) < first:
+                break
+    
+    print(f"Fetched {new_posts_count} new posts")
+    if skipped_due_to_lag > 0:
+        print(f"Skipped {skipped_due_to_lag} posts due to {LAG_DAYS}-day lag period")
+    sort_and_truncate(output_file)
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(
-        description="Fetch latest posts from LeetCode Compensations page."
-    )
-    parser.add_argument(
-        "--comps_path",
-        type=str,
-        default=config["app"]["data_dir"] / "raw_comps.jsonl",
-        help="Path to the file to store posts.",
-    )
-    parser.add_argument(
-        "--till_date",
-        type=str,
-        default=datetime.now().strftime(config["app"]["date_fmt"]),
-        help="Fetch posts till this date (YYYY/MM/DD).",
-    )
-    parser.add_argument(
-        "--max_fetch_records",
-        type=int,
-        default=config["app"]["max_fetch_recs"],
-        help="Maximum number of records to fetch per run.",
-    )
-
-    args = parser.parse_args()
-
-    if not args.till_date:
-        till_date = latest_parsed_date(args.comps_path)
-    else:
-        till_date = datetime.strptime(args.till_date, config["app"]["date_fmt"])
-
-    print(f"Fetching posts till {till_date}...")
-
-    start_date = datetime.now() - timedelta(days=config["app"]["lag_days"])
-    get_latest_posts(
-        args.comps_path, start_date, till_date, args.max_fetch_records
-    )
-    sort_and_truncate(args.comps_path, truncate=True)
+    output_file = config["app"]["data_dir"] / "raw_comps.jsonl"
+    refresh_posts(str(output_file))
