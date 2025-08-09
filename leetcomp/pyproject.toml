@@ -2,7 +2,7 @@
 name = "leetcomp"
 version = "0.1.0"
 description = "Scrapes Leetcode forum posts and aggregates compensation data"
-readme = "README.md"
+readme = "../README.md"
 requires-python = ">=3.11"
 dependencies = [
     "gql[requests]>=3.5.3",
