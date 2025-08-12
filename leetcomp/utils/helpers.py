@@ -86,3 +86,47 @@ def sort_and_truncate(file_path: str):
             f.write(json.dumps(record) + "\n")
     
     print(f"Sorted {len(records)} records")
+
+
+def truncate_raw_posts(file_path: str, keep_count: int = 100):
+    """Keep only the latest N records in the raw posts file to prevent it from growing too large."""
+    if not Path(file_path).exists():
+        print(f"File {file_path} does not exist")
+        return
+    
+    records = []
+    with open(file_path, "r") as f:
+        for line in f:
+            if line.strip():
+                try:
+                    record = json.loads(line)
+                    if "creation_date" in record:
+                        records.append(record)
+                except json.JSONDecodeError:
+                    continue
+    
+    if not records:
+        print(f"No valid records found in {file_path}")
+        return
+    
+    # Sort by creation date (newest first)
+    records.sort(
+        key=lambda x: datetime.strptime(x["creation_date"], config["app"]["date_fmt"]),
+        reverse=True
+    )
+    
+    original_count = len(records)
+    
+    # Keep only the latest records
+    if len(records) > keep_count:
+        records = records[:keep_count]
+        removed_count = original_count - len(records)
+        
+        # Write back to file
+        with open(file_path, "w") as f:
+            for record in records:
+                f.write(json.dumps(record) + "\n")
+        
+        print(f"Truncated raw posts: kept {len(records)} latest records, removed {removed_count} older records")
+    else:
+        print(f"Raw posts file has {len(records)} records (≤ {keep_count}), no truncation needed")

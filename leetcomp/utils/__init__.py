@@ -1,5 +1,5 @@
 from .config import config
-from .helpers import retry_with_exp_backoff, latest_parsed_date, sort_and_truncate
+from .helpers import retry_with_exp_backoff, latest_parsed_date, sort_and_truncate, truncate_raw_posts
 from .data_processing import (
     get_existing_ids, has_crossed_till_date, cleanup_record, mapped_record,
     map_location, map_yoe, load_mapping, jsonl_to_json, create_parsed_record
@@ -13,7 +13,7 @@ __all__ = [
     # Config
     "config",
     # Helpers
-    "retry_with_exp_backoff", "latest_parsed_date", "sort_and_truncate",
+    "retry_with_exp_backoff", "latest_parsed_date", "sort_and_truncate", "truncate_raw_posts",
     # Data processing
     "get_existing_ids", "has_crossed_till_date", "cleanup_record", "mapped_record",
     "map_location", "map_yoe", "load_mapping", "jsonl_to_json", "create_parsed_record",

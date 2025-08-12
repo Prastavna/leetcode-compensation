@@ -1,9 +1,9 @@
 try:
-    from .utils import config
+    from .utils import config, truncate_raw_posts
     from .refresh import refresh_posts
     from .parse import parse_posts
 except ImportError:
-    from utils import config
+    from utils import config, truncate_raw_posts
     from refresh import refresh_posts
     from parse import parse_posts
 
@@ -19,8 +19,8 @@ def main():
     print("\nStep 2: Parsing compensation data...")
     parse_posts(str(raw_file), str(parsed_file))
     
-    # print("\nStep 3: Converting to JSON...")
-    # jsonl_to_json(str(parsed_file), str(json_file))
+    print("\nStep 3: Cleaning up raw posts file...")
+    truncate_raw_posts(str(raw_file), keep_count=100)
     
     print("\nPipeline complete!")
 
