@@ -1,0 +1,109 @@
+name: manual-data-cleanup
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_ids:
+        description: 'Comma-separated post IDs to remove (e.g., 12345,67890,11111)'
+        required: true
+        type: string
+      run_refresh:
+        description: 'Run full data refresh after cleanup'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  manual-data-cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        version: "latest"
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Install dependencies
+      run: |
+        cd leetcomp
+        uv sync
+
+    - name: Clean up specified posts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd leetcomp
+        echo "Cleaning up post IDs: ${{ github.event.inputs.post_ids }}"
+        uv run python clean.py "${{ github.event.inputs.post_ids }}"
+
+    - name: Run full data refresh (if requested)
+      if: ${{ github.event.inputs.run_refresh == 'true' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd leetcomp
+        echo "Running full data refresh after cleanup..."
+        uv run python main.py
+
+    - name: Commit files
+      id: commit-files
+      run: |
+        git config --global user.name github-actions
+        git config --global user.email github-actions@github.com
+        git add .
+        git diff --staged --exit-code || has_changes=$?
+        if [ "$has_changes" == "1" ]; then
+          echo "Changes detected, committing..."
+          if [ "${{ github.event.inputs.run_refresh }}" == "true" ]; then
+            git commit -m "action: manual cleanup of posts (${{ github.event.inputs.post_ids }}) + data refresh"
+          else
+            git commit -m "action: manual cleanup of posts (${{ github.event.inputs.post_ids }})"
+          fi
+        else
+          echo "No changes to commit."
+          echo "skipnext=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Pull Request
+      if: (steps.commit-files.outputs.skipnext != 'true')
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: Manual data cleanup
+        title: "Manual cleanup of posts: ${{ github.event.inputs.post_ids }}"
+        body: |
+          This is a manual cleanup of the following post IDs:
+          `${{ github.event.inputs.post_ids }}`
+          
+          ${{ github.event.inputs.run_refresh == 'true' && '✅ Full data refresh was also performed after cleanup.' || '❌ No data refresh was performed.' }}
+          
+          This pull request was triggered manually via GitHub Actions.
+        branch: "manual-cleanup-${{ github.run_number }}"
+        delete-branch: true
+        draft: false
+
+    - name: Auto-merge PR
+      if: (steps.commit-files.outputs.skipnext != 'true')
+      uses: "pascalgn/automerge-action@v0.15.6"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        merge-method: squash
+        pull-request-author: "github-actions[bot]"
+        branch: "manual-cleanup-${{ github.run_number }}"
