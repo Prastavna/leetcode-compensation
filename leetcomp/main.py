@@ -1,6 +1,11 @@
-from utils import config
-from refresh import refresh_posts
-from parse import parse_posts
+try:
+    from .utils import config
+    from .refresh import refresh_posts
+    from .parse import parse_posts
+except ImportError:
+    from utils import config
+    from refresh import refresh_posts
+    from parse import parse_posts
 
 def main():
     data_dir = config["app"]["data_dir"]

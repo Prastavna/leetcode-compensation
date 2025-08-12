@@ -1,20 +1,13 @@
 import json
 import random
 import time
-import tomllib
 from datetime import datetime
 from functools import wraps
 from pathlib import Path
-from typing import Callable, Optional, Any
+from typing import Callable, Optional
 
-from dotenv import load_dotenv
+from .config import config
 
-load_dotenv(override=True)
-
-with open("../config.toml", "rb") as f:
-    config = tomllib.load(f)
-
-config["app"]["data_dir"] = Path(config["app"]["data_dir"])
 
 def retry_with_exp_backoff(retries: int):
     def decorator(function: Callable):
@@ -34,6 +27,7 @@ def retry_with_exp_backoff(retries: int):
                         raise
         return wrapper
     return decorator
+
 
 def latest_parsed_date(file_path: str) -> Optional[datetime]:
     if not Path(file_path).exists():
@@ -57,6 +51,7 @@ def latest_parsed_date(file_path: str) -> Optional[datetime]:
             continue
     
     return None
+
 
 def sort_and_truncate(file_path: str):
     if not Path(file_path).exists():
