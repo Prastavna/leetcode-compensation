@@ -8151,32 +8151,6 @@
         "mapped_yoe": "Senior (7-10)"
     },
     {
-        "id": "6361364",
-        "creation_date": "2025-02-02",
-        "company": "Startup",
-        "role": "SDE-2 (Data backend)",
-        "yoe": 5,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 48.0,
-        "total": 188.0,
-        "mapped_role": "SDE-2 (Data backend)",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": "6361364",
-        "creation_date": "2025-02-02",
-        "company": "Atlassian",
-        "role": "SDE-2/ P40",
-        "yoe": 5,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 50.0,
-        "total": 65.0,
-        "mapped_role": "SDE-2/ P40",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": "6355624",
         "creation_date": "2025-02-01",
         "company": "Pine labs",
