@@ -1,4 +1,5 @@
 import os
+import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta
 from typing import List, Optional
@@ -101,9 +102,9 @@ class CompensationOffer(BaseModel):
 
     @field_validator("interview_exp")
     @classmethod
-    def validate_interview_exp(cls, v: str) -> str:
-        if not v.strip():
-            return "N/A"
+    def validate_interview_exp(cls, v: Optional[str]) -> str:
+        if v is None or not v.strip():
+            return "n/a"
         return v
 
 
@@ -186,14 +187,24 @@ def is_within_lag_period(creation_date: str) -> bool:
     return post_date > lag_cutoff
 
 
+def extract_interview_exp_from_content(content: str) -> str:
+    """Extract interview experience link from post content using regex."""
+    pattern = re.compile(r"https://leetcode.com/discuss/post/(\d+)(?:\/[a-zA-Z0-9-]+)?/")
+    match = pattern.search(content)
+    return match.group(0) if match else 'N/A'
+    
+
 def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOffers]:
     """Parse compensation information from post content using OpenAI."""
     try:
+        # Extract interview experience link using regex
+        interview_exp = extract_interview_exp_from_content(post_content)
+        
         response = openai_client.chat.completions.parse(
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. A post can also contain interview experience. Interview experience will always be a link to a leetcode post that can start with 'https://leetcode.com/discuss/post/'. If no interview experience is mentioned or it is mentinoed within the post, return empty string for that field. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field.",
+                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field. DO NOT extract interview_exp field as it will be handled separately.",
                 },
                 {
                     "role": "user",
@@ -206,7 +217,15 @@ def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOf
             top_p=1,
             response_format=CompensationOffers,
         )
-        return response.choices[0].message.parsed
+        
+        parsed_offers = response.choices[0].message.parsed
+
+        # Set the interview_exp for all offers using regex extraction
+        if parsed_offers:
+            for offer in parsed_offers.offers:
+                offer.interview_exp = interview_exp
+        
+        return parsed_offers
     except Exception as e:
         print(f"OpenAI parsing error: {str(e)}")
         return None
