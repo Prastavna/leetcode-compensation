@@ -286,7 +286,7 @@ function displayOffers(page) {
                     ${offer.id}
                 </a>
             </abbr>
-            ${'interview_exp' in offer && offer.interview_exp !== 'N/A' ?
+            ${'interview_exp' in offer && offer.interview_exp.toLowerCase() !== 'n/a' ?
                 `<span style="margin-left: 4px;">
                 <a class="link-secondary" target="_blank" style="text-decoration: none;" href='${offer.interview_exp}'>★</a>
                 </span>` :

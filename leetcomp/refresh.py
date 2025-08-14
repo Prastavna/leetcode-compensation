@@ -75,9 +75,6 @@ def refresh_posts(output_file: str, max_posts: int = 100):
                     continue
             
             skip += first
-            
-            if len(posts_list) < first:
-                break
     
     print(f"Fetched {new_posts_count} new posts")
     if skipped_due_to_lag > 0:
