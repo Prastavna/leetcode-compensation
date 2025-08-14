@@ -3,18 +3,18 @@ import os
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any
 
 from .config import config
 
 
-def get_existing_ids(filepath: str) -> Set[str]:
+def get_existing_ids(filepath: str) -> set[str]:
     """Get set of existing IDs from a JSONL file."""
     if not os.path.exists(filepath):
         return set()
-    
+
     existing_ids = set()
-    with open(filepath, "r") as f:
+    with open(filepath) as f:
         for line in f:
             if line.strip():
                 try:
@@ -25,7 +25,7 @@ def get_existing_ids(filepath: str) -> Set[str]:
     return existing_ids
 
 
-def has_crossed_till_date(creation_date: str, till_date: Optional[datetime]) -> bool:
+def has_crossed_till_date(creation_date: str, till_date: datetime | None) -> bool:
     """Check if creation date is before or equal to till_date."""
     if till_date is None:
         return False
@@ -33,7 +33,7 @@ def has_crossed_till_date(creation_date: str, till_date: Optional[datetime]) -> 
     return dt <= till_date
 
 
-def cleanup_record(record: Dict[Any, Any]) -> None:
+def cleanup_record(record: dict[Any, Any]) -> None:
     """Clean up a record by removing unnecessary fields and formatting data."""
     record.pop("vote_count", None)
     record.pop("comment_count", None)
@@ -50,9 +50,9 @@ def cleanup_record(record: Dict[Any, Any]) -> None:
 
 def mapped_record(
     item: str,
-    mapping: Dict[str, str],
-    default: Optional[str] = None,
-    extras: Optional[List[str]] = None,
+    mapping: dict[str, str],
+    default: str | None = None,
+    extras: list[str] | None = None,
 ) -> str:
     """Map an item using a mapping dictionary with optional extras."""
     item = item.lower()
@@ -64,7 +64,7 @@ def mapped_record(
     return mapping.get(item, default or item.capitalize())
 
 
-def map_location(location: str, location_map: Dict[str, str]) -> str:
+def map_location(location: str, location_map: dict[str, str]) -> str:
     """Map location string using location mapping."""
     location = location.lower()
 
@@ -85,7 +85,7 @@ def map_location(location: str, location_map: Dict[str, str]) -> str:
     return location_map.get(location, location.capitalize())
 
 
-def map_yoe(yoe: int, yoe_map: Dict[tuple[int, int], str]) -> str:
+def map_yoe(yoe: int, yoe_map: dict[tuple[int, int], str]) -> str:
     """Map years of experience to a category."""
     for (start, end), mapped_yoe in yoe_map.items():
         if start <= yoe <= end:
@@ -94,10 +94,10 @@ def map_yoe(yoe: int, yoe_map: Dict[tuple[int, int], str]) -> str:
     return "Senior +"
 
 
-def load_mapping(map_path: str | Path) -> Dict[str, str]:
+def load_mapping(map_path: str | Path) -> dict[str, str]:
     """Load mapping dictionary from JSON file."""
     try:
-        with open(map_path, "r") as f:
+        with open(map_path) as f:
             data = json.load(f)
 
         mapping_dict = {}
@@ -121,22 +121,22 @@ def jsonl_to_json(jsonl_path: str, json_path: str) -> None:
     company_map = load_mapping(config["app"]["data_dir"] / "company_map.json")
     role_map = load_mapping(config["app"]["data_dir"] / "role_map.json")
     location_map = load_mapping(config["app"]["data_dir"] / "location_map.json")
-    
+
     # YOE mapping
-    yoe_map: Dict[tuple[int, int], str] = {
+    yoe_map: dict[tuple[int, int], str] = {
         (0, 1): "Entry (0-1)",
         (2, 6): "Mid (2-6)",
         (7, 10): "Senior (7-10)",
         (11, 30): "Senior + (11+)",
     }
-    
+
     records = []
 
-    with open(jsonl_path, "r") as file:
+    with open(jsonl_path) as file:
         for line in file:
             if not line.strip():
                 continue
-            
+
             try:
                 record = json.loads(line)
                 cleanup_record(record)
@@ -160,7 +160,7 @@ def jsonl_to_json(jsonl_path: str, json_path: str) -> None:
     print(f"Converted {len(records)} records!")
 
 
-def create_parsed_record(raw_post: Dict, offer: Any) -> Dict:
+def create_parsed_record(raw_post: dict, offer: Any) -> dict:
     """Create a parsed record from raw post and compensation offer."""
     return {
         "id": raw_post["id"],

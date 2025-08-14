@@ -1,8 +1,7 @@
 import os
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import List, Optional
 
 from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
@@ -25,6 +24,7 @@ openai_client = OpenAI(
 @dataclass
 class LeetCodePost:
     """Data class for LeetCode post."""
+
     id: str
     title: str
     content: str
@@ -36,13 +36,16 @@ class LeetCodePost:
 
 class CompensationOffer(BaseModel):
     """Pydantic model for compensation offer validation."""
+
     company: str = Field(description="Company name")
     role: str = Field(description="Job role/title")
     yoe: float = Field(description="Years of experience", ge=0, le=50)
     base_offer: float = Field(description="Base salary offer")
     total_offer: float = Field(description="Total compensation offer")
-    location: Optional[str] = Field(default="n/a", description="Job location")
-    interview_exp: Optional[str] = Field(default="n/a", description="Interview experience")
+    location: str | None = Field(default="n/a", description="Job location")
+    interview_exp: str | None = Field(
+        default="n/a", description="Interview experience"
+    )
 
     @field_validator("company")
     @classmethod
@@ -76,9 +79,11 @@ class CompensationOffer(BaseModel):
         if min_base <= v <= max_base:
             return v
 
-        raise ValueError(
-            f"base_offer {v} is out of range [{min_base}, {max_base}] even after conversion"
+        msg = (
+            f"base_offer {v} is out of range [{min_base}, {max_base}] "
+            "even after conversion"
         )
+        raise ValueError(msg)
 
     @field_validator("total_offer")
     @classmethod
@@ -96,13 +101,15 @@ class CompensationOffer(BaseModel):
         if min_total <= v <= max_total:
             return v
 
-        raise ValueError(
-            f"total_offer {v} is out of range [{min_total}, {max_total}] even after conversion"
+        msg = (
+            f"total_offer {v} is out of range [{min_total}, {max_total}] "
+            "even after conversion"
         )
+        raise ValueError(msg)
 
     @field_validator("interview_exp")
     @classmethod
-    def validate_interview_exp(cls, v: Optional[str]) -> str:
+    def validate_interview_exp(cls, v: str | None) -> str:
         if v is None or not v.strip():
             return "n/a"
         return v
@@ -110,11 +117,12 @@ class CompensationOffer(BaseModel):
 
 class CompensationOffers(BaseModel):
     """Container for multiple compensation offers."""
-    offers: List[CompensationOffer] = Field(description="List of compensation offers")
+
+    offers: list[CompensationOffer] = Field(description="List of compensation offers")
 
     @field_validator("offers")
     @classmethod
-    def validate_offers(cls, v: List[CompensationOffer]) -> List[CompensationOffer]:
+    def validate_offers(cls, v: list[CompensationOffer]) -> list[CompensationOffer]:
         if not v:
             raise ValueError("At least one offer must be provided")
         return v
@@ -122,45 +130,62 @@ class CompensationOffers(BaseModel):
 
 class LeetCodeFetcher:
     """LeetCode API client for fetching posts."""
-    
+
     def __init__(self):
         transport = RequestsHTTPTransport(url=LEETCODE_GRAPHQL_URL)
         self.client = Client(transport=transport)
-        
-        with open("queries/discussion_post_items.gql", "r") as f:
+
+        with open("queries/discussion_post_items.gql") as f:
             self.posts_query = gql(f.read())
-        
-        with open("queries/post_details.gql", "r") as f:
+
+        with open("queries/post_details.gql") as f:
             self.details_query = gql(f.read())
 
     @retry_with_exp_backoff(retries=3)
-    def fetch_posts_list(self, skip: int = 0, first: int = 50) -> List[dict]:
+    def fetch_posts_list(self, skip: int = 0, first: int = 50) -> list[dict]:
         """Fetch list of posts from LeetCode."""
-        result = self.client.execute(self.posts_query, variable_values={
-            "orderBy": "MOST_RECENT",
-            "keywords": [],
-            "tagSlugs": ["compensation"],
-            "skip": skip,
-            "first": first
-        })
+        result = self.client.execute(
+            self.posts_query,
+            variable_values={
+                "orderBy": "MOST_RECENT",
+                "keywords": [],
+                "tagSlugs": ["compensation"],
+                "skip": skip,
+                "first": first,
+            },
+        )
         return result["ugcArticleDiscussionArticles"]["edges"]
 
     @retry_with_exp_backoff(retries=3)
     def fetch_post_details(self, topic_id: str) -> dict:
         """Fetch detailed post data from LeetCode."""
-        result = self.client.execute(self.details_query, variable_values={
-            "topicId": topic_id
-        })
+        result = self.client.execute(
+            self.details_query, variable_values={"topicId": topic_id}
+        )
         return result["ugcArticleDiscussionArticle"]
 
     def parse_post_data(self, post_data: dict) -> LeetCodePost:
         """Parse raw post data into LeetCodePost object."""
-        upvotes = [r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"][0]["count"] if [r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"] else 0
-        downvotes = [r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"][0]["count"] if [r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"] else 0
-        
-        creation_date = datetime.fromisoformat(post_data["createdAt"].replace('Z', '+00:00'))
+        upvotes = (
+            [r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"][0][
+                "count"
+            ]
+            if [r for r in post_data["reactions"] if r["reactionType"] == "UPVOTE"]
+            else 0
+        )
+        downvotes = (
+            [r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"][0][
+                "count"
+            ]
+            if [r for r in post_data["reactions"] if r["reactionType"] == "DOWNVOTE"]
+            else 0
+        )
+
+        creation_date = datetime.fromisoformat(
+            post_data["createdAt"].replace("Z", "+00:00")
+        )
         formatted_date = creation_date.strftime(config["app"]["date_fmt"])
-        
+
         return LeetCodePost(
             id=post_data["topic"]["id"],
             title=post_data["title"],
@@ -168,7 +193,7 @@ class LeetCodeFetcher:
             vote_count=upvotes - downvotes,
             comment_count=post_data["topic"]["topLevelCommentCount"],
             view_count=post_data["hitCount"],
-            creation_date=formatted_date
+            creation_date=formatted_date,
         )
 
     def should_parse_post(self, post: LeetCodePost) -> bool:
@@ -189,22 +214,34 @@ def is_within_lag_period(creation_date: str) -> bool:
 
 def extract_interview_exp_from_content(content: str) -> str:
     """Extract interview experience link from post content using regex."""
-    pattern = re.compile(r"https://leetcode.com/discuss/post/(\d+)(?:\/[a-zA-Z0-9-]+)?/")
+    pattern = re.compile(
+        r"https://leetcode.com/discuss/post/(\d+)(?:\/[a-zA-Z0-9-]+)?/"
+    )
     match = pattern.search(content)
-    return match.group(0) if match else 'N/A'
-    
+    return match.group(0) if match else "N/A"
 
-def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOffers]:
+
+def parse_compensation_with_openai(post_content: str) -> CompensationOffers | None:
     """Parse compensation information from post content using OpenAI."""
     try:
         # Extract interview experience link using regex
         interview_exp = extract_interview_exp_from_content(post_content)
-        
+
         response = openai_client.chat.completions.parse(
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract all compensation offers mentioned in the post. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field. DO NOT extract interview_exp field as it will be handled separately.",
+                    "content": (
+                        "You are a helpful assistant that extracts compensation "
+                        "information from LeetCode posts. Extract all compensation "
+                        "offers mentioned in the post. If some role or company is "
+                        "not mentioned, return empty string for that field and not "
+                        "something like 'n/a' or startup. You need to determine "
+                        "whether the post is India based/Remote or not. If it is "
+                        "not India based, return empty string for that field. "
+                        "DO NOT extract interview_exp field as it will be handled "
+                        "separately."
+                    ),
                 },
                 {
                     "role": "user",
@@ -217,14 +254,14 @@ def parse_compensation_with_openai(post_content: str) -> Optional[CompensationOf
             top_p=1,
             response_format=CompensationOffers,
         )
-        
+
         parsed_offers = response.choices[0].message.parsed
 
         # Set the interview_exp for all offers using regex extraction
         if parsed_offers:
             for offer in parsed_offers.offers:
                 offer.interview_exp = interview_exp
-        
+
         return parsed_offers
     except Exception as e:
         print(f"OpenAI parsing error: {str(e)}")
