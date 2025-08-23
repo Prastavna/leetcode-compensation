@@ -14,13 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       (github.head_ref == 'data-refresh' || startsWith(github.head_ref, 'manual-cleanup-')) &&
-      github.actor == 'github-actions[bot]'
+      github.actor == 'github-actions[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name
 
     steps:
-    - name: Auto-merge PR
-      uses: "pascalgn/automerge-action@v0.15.6"
+    - name: Enable auto-merge for bot PRs
+      run: |
+        gh pr merge ${{ github.event.pull_request.number }} --auto --squash
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        merge-method: squash
-        pull-request-author: "github-actions[bot]"
