@@ -84,7 +84,7 @@ def clean_posts(post_ids_str: str):
         print("No valid post IDs found")
         return
 
-    print(f"Cleaning {len(post_ids)} post IDs: {', '.join(post_ids)}")
+    print(f"Cleaning {len(post_ids)} post IDs: {', '.join(map(str, post_ids))}")
 
     data_dir = config["app"]["data_dir"]
     jsonl_file = str(data_dir / "parsed_comps.jsonl")
