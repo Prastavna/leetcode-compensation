@@ -54,15 +54,29 @@ def parse_posts(input_file: str, output_file: str):
             compensation_offers = parse_compensation_with_openai(input_text)
 
             if compensation_offers and compensation_offers.offers:
+                # Track companies to prevent duplicates within the same post
+                seen_companies = set()
+                valid_offers = []
+                
                 for offer in compensation_offers.offers:
-                    parsed_record = create_parsed_record(raw_post, offer)
-                    outfile.write(json.dumps(parsed_record) + "\n")
-                    outfile.flush()
+                    company = offer.company.lower() if hasattr(offer, 'company') and offer.company else None
+                    if company and company not in seen_companies:
+                        seen_companies.add(company)
+                        valid_offers.append(offer)
+                
+                if valid_offers:
+                    for offer in valid_offers:
+                        parsed_record = create_parsed_record(raw_post, offer)
+                        outfile.write(json.dumps(parsed_record) + "\n")
+                        outfile.flush()
 
-                parsed_count += 1
-                print(
-                    f"Parsed post {post_id}: {len(compensation_offers.offers)} offers"
-                )
+                    parsed_count += 1
+                    print(
+                        f"Parsed post {post_id}: {len(valid_offers)} offers (filtered from {len(compensation_offers.offers)})"
+                    )
+                else:
+                    failed_count += 1
+                    print(f"No valid offers after deduplication for post {post_id}")
             else:
                 failed_count += 1
                 print(f"Failed to parse post {post_id}")
