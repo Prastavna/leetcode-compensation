@@ -98,12 +98,3 @@ jobs:
         delete-branch: true
         draft: false
 
-    - name: Auto-merge PR
-      if: (steps.commit-files.outputs.skipnext != 'true')
-      uses: "pascalgn/automerge-action@v0.15.6"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        merge-method: squash
-        pull-request-author: "github-actions[bot]"
-        branch: "manual-cleanup-${{ github.run_number }}"
