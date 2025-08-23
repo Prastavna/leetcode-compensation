@@ -1,18 +1,5 @@
 [
     {
-        "id": 7093223,
-        "creation_date": "2025-08-17",
-        "company": "Current company",
-        "role": "SDE 2",
-        "yoe": 1,
-        "location": "N/A",
-        "interview_exp": "N/A",
-        "base": 19.0,
-        "total": 24.5,
-        "mapped_role": "SDE II",
-        "mapped_yoe": "Entry (0-1)"
-    },
-    {
         "id": 7092907,
         "creation_date": "2025-08-17",
         "company": "Autodesk",
