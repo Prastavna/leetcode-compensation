@@ -13,19 +13,6 @@
         "mapped_yoe": "Mid (2-6)"
     },
     {
-        "id": 7092907,
-        "creation_date": "2025-08-17",
-        "company": "Autodesk",
-        "role": "SDE (C++)",
-        "yoe": 4,
-        "location": "India",
-        "interview_exp": "N/A",
-        "base": 22.5,
-        "total": 22.5,
-        "mapped_role": "SDE (C++)",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": 7088542,
         "creation_date": "2025-08-16",
         "company": "Google",
@@ -182,19 +169,6 @@
         "mapped_yoe": "Mid (2-6)"
     },
     {
-        "id": 7069410,
-        "creation_date": "2025-08-11",
-        "company": "Atlassian",
-        "role": "SE-2",
-        "yoe": 5,
-        "location": "India",
-        "interview_exp": "https://leetcode.com/discuss/post/7070747/",
-        "base": 47.0,
-        "total": 78.15,
-        "mapped_role": "SE-2",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": 7066298,
         "creation_date": "2025-08-11",
         "company": "Uber",
@@ -231,19 +205,6 @@
         "base": 25.0,
         "total": 30.0,
         "mapped_role": "Associate",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 7063905,
-        "creation_date": "2025-08-10",
-        "company": "Samsung",
-        "role": "SDE-1",
-        "yoe": 4,
-        "location": "India",
-        "interview_exp": "N/A",
-        "base": 31.0,
-        "total": 36.0,
-        "mapped_role": "SDE I",
         "mapped_yoe": "Mid (2-6)"
     },
     {

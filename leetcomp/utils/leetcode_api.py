@@ -43,9 +43,7 @@ class CompensationOffer(BaseModel):
     base_offer: float = Field(description="Base salary offer")
     total_offer: float = Field(description="Total compensation offer")
     location: str | None = Field(default="n/a", description="Job location")
-    interview_exp: str | None = Field(
-        default="n/a", description="Interview experience"
-    )
+    interview_exp: str | None = Field(default="n/a", description="Interview experience")
 
     @field_validator("company")
     @classmethod
@@ -231,17 +229,7 @@ def parse_compensation_with_openai(post_content: str) -> CompensationOffers | No
             messages=[
                 {
                     "role": "system",
-                    "content": (
-                        "You are a helpful assistant that extracts compensation "
-                        "information from LeetCode posts. Extract all compensation "
-                        "offers mentioned in the post. If some role or company is "
-                        "not mentioned, return empty string for that field and not "
-                        "something like 'n/a' or startup. You need to determine "
-                        "whether the post is India based/Remote or not. If it is "
-                        "not India based, return empty string for that field. "
-                        "DO NOT extract interview_exp field as it will be handled "
-                        "separately."
-                    ),
+                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract compensation offers mentioned in the post. A user can have mentioned his previous compensation offer in the post, which needs to be ignored, only the current offer needs to be extracted. A post can have multiple compensation offers for the same company, like 1st year comp, 2nd year comp, etc, in this case only extract the first year compensation. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field. DO NOT extract interview_exp field as it will be handled separately.",
                 },
                 {
                     "role": "user",
