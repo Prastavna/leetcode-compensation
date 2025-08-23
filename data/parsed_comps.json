@@ -1,5 +1,31 @@
 [
     {
+        "id": 7096893,
+        "creation_date": "2025-08-18",
+        "company": "Colortokens",
+        "role": "MTS IV",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 39.0,
+        "total": 39.0,
+        "mapped_role": "MTS IV",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7093223,
+        "creation_date": "2025-08-17",
+        "company": "Microsoft",
+        "role": "SDE 2",
+        "yoe": 1,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 19.0,
+        "total": 19.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7092907,
         "creation_date": "2025-08-17",
         "company": "Autodesk",
