@@ -8,7 +8,7 @@ except ImportError:
     from utils import config
 
 
-def remove_posts_from_jsonl(file_path: str, post_ids: set[str]) -> int:
+def remove_posts_from_jsonl(file_path: str, post_ids: set[int]) -> int:
     """Remove posts with given IDs from JSONL file and return count of removed posts."""
     if not Path(file_path).exists():
         print(f"File {file_path} does not exist")
@@ -38,7 +38,7 @@ def remove_posts_from_jsonl(file_path: str, post_ids: set[str]) -> int:
     return removed_count
 
 
-def remove_posts_from_json(file_path: str, post_ids: set[str]) -> int:
+def remove_posts_from_json(file_path: str, post_ids: set[int]) -> int:
     """Remove posts with given IDs from JSON file and return count of removed posts."""
     if not Path(file_path).exists():
         print(f"File {file_path} does not exist")
@@ -69,10 +69,16 @@ def clean_posts(post_ids_str: str):
         print("No post IDs provided")
         return
 
-    # Parse comma-separated post IDs
-    post_ids = {
-        post_id.strip() for post_id in post_ids_str.split(",") if post_id.strip()
-    }
+    # Parse comma-separated post IDs and convert to integers
+    post_ids = set()
+    for post_id in post_ids_str.split(","):
+        post_id = post_id.strip()
+        if post_id:
+            try:
+                post_ids.add(int(post_id))
+            except ValueError:
+                print(f"Invalid post ID: {post_id} (must be a number)")
+                return
 
     if not post_ids:
         print("No valid post IDs found")
