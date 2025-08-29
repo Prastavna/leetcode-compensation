@@ -84,7 +84,7 @@ jobs:
       if: (steps.commit-files.outputs.skipnext != 'true')
       uses: peter-evans/create-pull-request@v7
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         commit-message: Manual data cleanup
         title: "Manual cleanup of posts: ${{ github.event.inputs.post_ids }}"
         body: |
