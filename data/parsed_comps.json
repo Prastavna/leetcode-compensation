@@ -11661,32 +11661,6 @@
         "mapped_yoe": "Senior (7-10)"
     },
     {
-        "id": 6124958,
-        "creation_date": "2024-12-08",
-        "company": "Small startup",
-        "role": "Mobile App Developer (Flutter, Android)",
-        "yoe": 6,
-        "location": "Remote/WFH",
-        "interview_exp": "N/A",
-        "base": 16.0,
-        "total": 16.0,
-        "mapped_role": "Mobile App Developer (Flutter, Android)",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 6124958,
-        "creation_date": "2024-12-08",
-        "company": "Existing company",
-        "role": "Mobile App Developer (Flutter, Android)",
-        "yoe": 6,
-        "location": "Remote/WFH",
-        "interview_exp": "N/A",
-        "base": 20.0,
-        "total": 20.0,
-        "mapped_role": "Mobile App Developer (Flutter, Android)",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": 6124639,
         "creation_date": "2024-12-08",
         "company": "Google",
