@@ -20,7 +20,6 @@ openai_client = OpenAI(
     api_key=os.getenv("GITHUB_TOKEN"),
 )
 
-
 @dataclass
 class LeetCodePost:
     """Data class for LeetCode post."""
@@ -211,12 +210,45 @@ def is_within_lag_period(creation_date: str) -> bool:
 
 
 def extract_interview_exp_from_content(content: str) -> str:
-    """Extract interview experience link from post content using regex."""
+    """Extract interview experience link from post content and validate it has interview tag."""
     pattern = re.compile(
         r"https://leetcode.com/discuss/post/(\d+)(?:\/[a-zA-Z0-9-]+)?/"
     )
     match = pattern.search(content)
-    return match.group(0) if match else "N/A"
+
+    if not match:
+        return "N/A"
+
+    post_id = match.group(1)
+
+    try:
+        # Create GraphQL client for this request
+        transport = RequestsHTTPTransport(url=LEETCODE_GRAPHQL_URL)
+        client = Client(transport=transport)
+
+        # Load post details query
+        with open("queries/post_details.gql") as f:
+            details_query = gql(f.read())
+
+        # Fetch post details to check if it has interview tag
+        result = client.execute(details_query, variable_values={"topicId": post_id})
+        post_details = result.get("ugcArticleDiscussionArticle")
+
+        if not post_details:
+            return match.group(0)
+
+        tags = post_details.get("tags", [])
+
+        # Check if any tag has slug "interview"
+        has_interview_tag = any(tag.get("slug") == "interview" for tag in tags)
+
+        if has_interview_tag:
+            return match.group(0)
+        else:
+            return "N/A"
+    except Exception:
+        # If we can't fetch details, return the link anyway
+        return match.group(0)
 
 
 def parse_compensation_with_openai(post_content: str) -> CompensationOffers | None:
@@ -229,7 +261,7 @@ def parse_compensation_with_openai(post_content: str) -> CompensationOffers | No
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract compensation offers mentioned in the post. A user can have mentioned his previous compensation offer in the post, which needs to be ignored, only the current offer needs to be extracted. A post can have multiple compensation offers for the same company, like 1st year comp, 2nd year comp, etc, in this case only extract the first year compensation. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field. DO NOT extract interview_exp field as it will be handled separately.",
+                    "content": "You are a helpful assistant that extracts compensation information from LeetCode posts. Extract compensation offers mentioned in the post. A user can have mentioned his previous compensation offer in the post, which needs to be ignored, only the current offer needs to be extracted. A post can have multiple compensation offers for the same company, like 1st year comp, 2nd year comp, etc, in this case only extract the first year compensation. If some role or company is not mentioned, return empty string for that field and not something like 'n/a' or startup. You need to determine whether the post is India based/Remote or not. If it is not India based, return empty string for that field. DO NOT extract interview_exp field as it will be handled separately.",  # noqa E501
                 },
                 {
                     "role": "user",
@@ -238,7 +270,7 @@ def parse_compensation_with_openai(post_content: str) -> CompensationOffers | No
             ],
             model="openai/gpt-4o-mini",
             temperature=0.1,
-            max_tokens=4096 * 2,
+            max_tokens=4096 * 4,
             top_p=1,
             response_format=CompensationOffers,
         )

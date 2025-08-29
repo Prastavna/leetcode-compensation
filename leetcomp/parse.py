@@ -57,13 +57,13 @@ def parse_posts(input_file: str, output_file: str):
                 # Track companies to prevent duplicates within the same post
                 seen_companies = set()
                 valid_offers = []
-                
+
                 for offer in compensation_offers.offers:
                     company = offer.company.lower() if hasattr(offer, 'company') and offer.company else None
                     if company and company not in seen_companies:
                         seen_companies.add(company)
                         valid_offers.append(offer)
-                
+
                 if valid_offers:
                     for offer in valid_offers:
                         parsed_record = create_parsed_record(raw_post, offer)
@@ -72,7 +72,7 @@ def parse_posts(input_file: str, output_file: str):
 
                     parsed_count += 1
                     print(
-                        f"Parsed post {post_id}: {len(valid_offers)} offers (filtered from {len(compensation_offers.offers)})"
+                        f"Parsed post {post_id}: {len(valid_offers)} offers (from {len(compensation_offers.offers)})"
                     )
                 else:
                     failed_count += 1
