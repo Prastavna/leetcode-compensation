@@ -754,58 +754,6 @@
         "mapped_yoe": "Senior (7-10)"
     },
     {
-        "id": 7007227,
-        "creation_date": "2025-07-26",
-        "company": "Startup",
-        "role": "Classical ML",
-        "yoe": 3,
-        "location": "Pune",
-        "interview_exp": "N/A",
-        "base": 20.0,
-        "total": 33.0,
-        "mapped_role": "Classical ML",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 7007227,
-        "creation_date": "2025-07-26",
-        "company": "Hsbc",
-        "role": "ML in Finance",
-        "yoe": 3,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 15.0,
-        "total": 15.0,
-        "mapped_role": "ML in Finance",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 7007227,
-        "creation_date": "2025-07-26",
-        "company": "Kpmg",
-        "role": "GenAI",
-        "yoe": 3,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 15.7,
-        "total": 17.27,
-        "mapped_role": "GenAI",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 7007227,
-        "creation_date": "2025-07-26",
-        "company": "Siemens",
-        "role": "GenAI",
-        "yoe": 3,
-        "location": "Pune",
-        "interview_exp": "N/A",
-        "base": 15.0,
-        "total": 16.5,
-        "mapped_role": "GenAI",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": 7000383,
         "creation_date": "2025-07-24",
         "company": "Hopscotch",
