@@ -9451,32 +9451,6 @@
         "mapped_yoe": "Mid (2-6)"
     },
     {
-        "id": 6284070,
-        "creation_date": "2025-01-15",
-        "company": "Oracle oda",
-        "role": "Senior Member of Technical Staff",
-        "yoe": 4,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 30.5,
-        "total": 35.0,
-        "mapped_role": "MTS II",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 6284070,
-        "creation_date": "2025-01-15",
-        "company": "Startup",
-        "role": "Not specified",
-        "yoe": 4,
-        "location": "N/A",
-        "interview_exp": "N/A",
-        "base": 30.0,
-        "total": 45.0,
-        "mapped_role": "Not specified",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
         "id": 6283136,
         "creation_date": "2025-01-15",
         "company": "JP Morgan Chase",
@@ -10052,13 +10026,13 @@
         "id": 6231072,
         "creation_date": "2025-01-05",
         "company": "Acalvio",
-        "role": "Member – Technical Staff",
+        "role": "Member \u2013 Technical Staff",
         "yoe": 6,
         "location": "Bangalore",
         "interview_exp": "N/A",
         "base": 31.0,
         "total": 31.0,
-        "mapped_role": "Member – Technical Staff",
+        "mapped_role": "Member \u2013 Technical Staff",
         "mapped_yoe": "Mid (2-6)"
     },
     {
@@ -10112,32 +10086,6 @@
         "total": 26.0,
         "mapped_role": "SDE I",
         "mapped_yoe": "Entry (0-1)"
-    },
-    {
-        "id": 6225796,
-        "creation_date": "2025-01-03",
-        "company": "Flipkart",
-        "role": "SDE-2",
-        "yoe": 2,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 18.2,
-        "total": 24.7,
-        "mapped_role": "SDE II",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 6225796,
-        "creation_date": "2025-01-03",
-        "company": "Unknown startup",
-        "role": "Unknown",
-        "yoe": 2,
-        "location": "N/A",
-        "interview_exp": "N/A",
-        "base": 25.0,
-        "total": 25.0,
-        "mapped_role": "Unknown",
-        "mapped_yoe": "Mid (2-6)"
     },
     {
         "id": 6224271,
@@ -16923,32 +16871,6 @@
         "base": 32.0,
         "total": 42.0,
         "mapped_role": "Data Engineer",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 5799878,
-        "creation_date": "2024-09-17",
-        "company": "Accenture",
-        "role": "Application Developer Senior Analyst",
-        "yoe": 2,
-        "location": "Bangalore",
-        "interview_exp": "N/A",
-        "base": 12.8,
-        "total": 16.23,
-        "mapped_role": "Analyst",
-        "mapped_yoe": "Mid (2-6)"
-    },
-    {
-        "id": 5799878,
-        "creation_date": "2024-09-17",
-        "company": "Startup",
-        "role": "Unknown",
-        "yoe": 2,
-        "location": "Mumbai",
-        "interview_exp": "N/A",
-        "base": 11.5,
-        "total": 11.5,
-        "mapped_role": "Unknown",
         "mapped_yoe": "Mid (2-6)"
     },
     {
@@ -25340,13 +25262,13 @@
         "id": 5065912,
         "creation_date": "2024-04-24",
         "company": "Microsoft",
-        "role": "Software Engineer II(L61) – Consumer Identity Experiences Team",
+        "role": "Software Engineer II(L61) \u2013 Consumer Identity Experiences Team",
         "yoe": 3,
         "location": "Hyderabad",
         "interview_exp": "N/A",
         "base": 26.0,
         "total": 44.0,
-        "mapped_role": "Software Engineer II(L61) – Consumer Identity Experiences Team",
+        "mapped_role": "Software Engineer II(L61) \u2013 Consumer Identity Experiences Team",
         "mapped_yoe": "Mid (2-6)"
     },
     {
@@ -28590,13 +28512,13 @@
         "id": 4801803,
         "creation_date": "2024-03-01",
         "company": "Oppo",
-        "role": "Software Engineer (Engineer Level – 3)",
+        "role": "Software Engineer (Engineer Level \u2013 3)",
         "yoe": 0,
         "location": "Hyderabad",
         "interview_exp": "N/A",
         "base": 24.0,
         "total": 34.0,
-        "mapped_role": "Software Engineer (Engineer Level – 3)",
+        "mapped_role": "Software Engineer (Engineer Level \u2013 3)",
         "mapped_yoe": "Entry (0-1)"
     },
     {
