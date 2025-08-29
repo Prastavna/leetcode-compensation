@@ -243,7 +243,7 @@ function displayOffers(page) {
     const companyHeader = headerRow.insertCell();
     companyHeader.innerHTML = `
     <b style="font-size: 13px;" >Company<br>
-    <span class="text-secondary">Location | Date</span></b>
+    <span class="text-secondary">Location</span></b>
     `;
     const roleHeader = headerRow.insertCell();
     roleHeader.innerHTML = '<b style="font-size: 13px;" >Role</b>';
@@ -297,7 +297,7 @@ function displayOffers(page) {
         companyCell.innerHTML = `
         <b style="font-size: 13px;">${offer.company}</b>
         <br><span class="text-secondary">
-        ${offer.location} | ${offer.creation_date}
+        ${offer.location}
         </span>`;
         const roleCell = row.insertCell();
         roleCell.innerHTML = `
