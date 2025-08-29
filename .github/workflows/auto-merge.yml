@@ -25,21 +25,6 @@ jobs:
         echo "Authenticated as: $USERNAME"
       env:
         GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-    - name: Debug PR information
-      run: |
-        echo "🔍 Debugging PR information:"
-        echo "github.head_ref: ${{ github.head_ref }}"
-        echo "github.actor: ${{ github.actor }}"
-        echo "authenticated username: ${{ steps.get-user.outputs.username }}"
-        echo "github.event.pull_request.head.repo.full_name: ${{ github.event.pull_request.head.repo.full_name }}"
-        echo "github.event.pull_request.base.repo.full_name: ${{ github.event.pull_request.base.repo.full_name }}"
-        echo "github.event.pull_request.number: ${{ github.event.pull_request.number }}"
-        echo ""
-        echo "🔍 Condition checks:"
-        echo "Is head_ref 'data-refresh'? $([ '${{ github.head_ref }}' == 'data-refresh' ] && echo 'true' || echo 'false')"
-        echo "Does head_ref start with 'manual-cleanup-'? $(echo '${{ github.head_ref }}' | grep -q '^manual-cleanup-' && echo 'true' || echo 'false')"
-        echo "Is actor same as authenticated user? $([ '${{ github.actor }}' == '${{ steps.get-user.outputs.username }}' ] && echo 'true' || echo 'false')"
-        echo "Same repo? $([ '${{ github.event.pull_request.head.repo.full_name }}' == '${{ github.event.pull_request.base.repo.full_name }}' ] && echo 'true' || echo 'false')"
     - name: Enable auto-merge for bot PRs
       if: >
         (github.head_ref == 'data-refresh' || startsWith(github.head_ref, 'manual-cleanup-')) &&
