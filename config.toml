@@ -1,7 +1,7 @@
 [app]
 data_dir = "../data"
 date_fmt = "%Y-%m-%d %H:%M:%S"
-lag_days = 2
+lag_days = 7
 leetcode_graphql_url = "https://leetcode.com/graphql"
 max_fetch_recs = 10000
 max_recs = 10000

@@ -14,7 +14,7 @@ def main():
     parsed_file = data_dir / "parsed_comps.jsonl"
 
     print("Step 1: Refreshing posts from LeetCode...")
-    refresh_posts(str(raw_file), max_posts=10000)
+    refresh_posts(str(raw_file), max_posts=config["app"]["max_fetch_recs"])
 
     print("\nStep 2: Parsing compensation data...")
     parse_posts(str(raw_file), str(parsed_file))

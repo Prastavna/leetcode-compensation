@@ -80,7 +80,7 @@ def sort_and_truncate(file_path: str):
         reverse=True,
     )
 
-    max_records = config["app"].get("max_recs", 1000)
+    max_records = config["app"]["max_recs"]
     if len(records) > max_records:
         records = records[:max_records]
         print(f"Truncated to {max_records} records")

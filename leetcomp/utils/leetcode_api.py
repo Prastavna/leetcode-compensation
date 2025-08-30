@@ -11,8 +11,8 @@ from pydantic import BaseModel, Field, field_validator
 from .config import config
 from .helpers import retry_with_exp_backoff
 
-LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql"
-LAG_DAYS = 5
+LEETCODE_GRAPHQL_URL = config["app"]["leetcode_graphql_url"]
+LAG_DAYS = config["app"]["lag_days"]
 
 # OpenAI client for parsing
 openai_client = OpenAI(
@@ -138,7 +138,7 @@ class LeetCodeFetcher:
         with open("queries/post_details.gql") as f:
             self.details_query = gql(f.read())
 
-    @retry_with_exp_backoff(retries=3)
+    @retry_with_exp_backoff(retries=config["app"]["n_api_retries"])
     def fetch_posts_list(self, skip: int = 0, first: int = 50) -> list[dict]:
         """Fetch list of posts from LeetCode."""
         result = self.client.execute(
@@ -153,7 +153,7 @@ class LeetCodeFetcher:
         )
         return result["ugcArticleDiscussionArticles"]["edges"]
 
-    @retry_with_exp_backoff(retries=3)
+    @retry_with_exp_backoff(retries=config["app"]["n_api_retries"])
     def fetch_post_details(self, topic_id: str) -> dict:
         """Fetch detailed post data from LeetCode."""
         result = self.client.execute(

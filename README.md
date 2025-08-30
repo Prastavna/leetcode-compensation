@@ -153,14 +153,18 @@ The project uses `config.toml` for configuration:
 ```toml
 [app]
 data_dir = "../data"
-date_fmt = "%Y-%m-%d"
-max_recs = 1000
+date_fmt = "%Y-%m-%d %H:%M:%S"
+lag_days = 7
+leetcode_graphql_url = "https://leetcode.com/graphql"
+max_fetch_recs = 10000
+max_recs = 10000
+n_api_retries = 3
 
 [parsing]
-min_base_offer = 1.0
-max_base_offer = 200.0
-min_total_offer = 1.0
-max_total_offer = 300.0
+max_base_offer = 120
+max_total_offer = 200
+min_base_offer = 2
+min_total_offer = 3
 ```
 
 ## Features
