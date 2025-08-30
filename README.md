@@ -1,15 +1,17 @@
 <p align="center">
-<img src="./assets/leetcomp_banner.png">
+<img src="./assets/leetcomp.png" width="128">
+<br/>
 <sub>https://prastavna.github.io/leetcode-compensation</sub>
 </p>
 
 <p align="center">
 <a href="https://github.com/prastavna/leetcode-compensation/actions/workflows/data-refresh.yaml"><img src="https://github.com/prastavna/leetcode-compensation/actions/workflows/data-refresh.yaml/badge.svg" alt="automatic-data-update"/ ></a>
 <a href="https://github.com/prastavna/leetcode-compensation/actions/workflows/manual-cleanup.yaml"><img src="https://github.com/prastavna/leetcode-compensation/actions/workflows/manual-cleanup.yaml/badge.svg" alt="manual-cleanup"/ ></a>
-<a href="https://github.com/prastavna/leetcode-compensation/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/prastavna/leetcode-compensation/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment" /></a>
+<a href="https://github.com/prastavna/leetcode-compensation/actions/workflows/deploy-site.yaml"><img src="https://github.com/prastavna/leetcode-compensation/actions/workflows/deploy-site.yaml/badge.svg" alt="deploy-site" /></a>
 </p>
 
 **[LeetCode Compensation](https://prastavna.github.io/leetcode-compensation)** is a tool that helps you find **Software Engineer Salary in India** by:
+
 - Fetching compensation data from Leetcode forums using GraphQL API
 - Automated weekly updates through GitHub Actions
 - Using LLMs (GitHub Models) for parsing and sanitizing structured data from posts
@@ -208,6 +210,7 @@ uv run python -m pytest  # Run tests (when available)
 ### Code Quality
 
 The project uses modern Python tooling:
+
 - **uv** for fast dependency management
 - **Pydantic** for data validation
 - **Type hints** throughout the codebase
