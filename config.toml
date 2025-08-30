@@ -3,7 +3,6 @@ data_dir = "../data"
 date_fmt = "%Y-%m-%d %H:%M:%S"
 lag_days = 2
 leetcode_graphql_url = "https://leetcode.com/graphql"
-llm_predictor = "openrouter"
 max_fetch_recs = 10000
 max_recs = 10000
 n_api_retries = 3

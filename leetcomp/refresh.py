@@ -70,6 +70,8 @@ def refresh_posts(output_file: str, max_posts: int = 100):
                 try:
                     # Only fetch details if we passed the date filters
                     post_details = fetcher.fetch_post_details(topic_id)
+                    if post_details is None:
+                       continue
                     post = fetcher.parse_post_data(post_details)
 
                     if fetcher.should_parse_post(post):
