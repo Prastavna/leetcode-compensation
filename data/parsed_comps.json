@@ -1,5 +1,31 @@
 [
     {
+        "id": 7237144,
+        "creation_date": "2025-09-30",
+        "company": "Samsung r&d institute india \u2013 noida",
+        "role": "Engineer",
+        "yoe": 0,
+        "location": "NCR/Up",
+        "interview_exp": "N/A",
+        "base": 13.67,
+        "total": 18.5,
+        "mapped_role": "Engineer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7230804,
+        "creation_date": "2025-09-28",
+        "company": "Grab",
+        "role": "Senior Software Engineer, Mobile (Android)",
+        "yoe": 6,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 4.0,
+        "total": 52.0,
+        "mapped_role": "Senior Software Engineer, Mobile (Android)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7227427,
         "creation_date": "2025-09-27",
         "company": "Toast",
