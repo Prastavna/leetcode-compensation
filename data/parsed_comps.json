@@ -1,5 +1,31 @@
 [
     {
+        "id": 7274928,
+        "creation_date": "2025-10-14",
+        "company": "Jiohotstar",
+        "role": "SDE 2",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 26.5,
+        "total": 38.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7272892,
+        "creation_date": "2025-10-13",
+        "company": "ServiceNow",
+        "role": "Senior Data Scientist (IC3)",
+        "yoe": 2,
+        "location": "Remote/WFH",
+        "interview_exp": "N/A",
+        "base": 32.5,
+        "total": 46.31,
+        "mapped_role": "Senior Data Scientist (IC3)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7266943,
         "creation_date": "2025-10-11",
         "company": "Pramata solutions",
