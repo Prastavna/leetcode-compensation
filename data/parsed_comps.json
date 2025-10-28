@@ -1,5 +1,57 @@
 [
     {
+        "id": 7290286,
+        "creation_date": "2025-10-21",
+        "company": "Uber india systems private limited",
+        "role": "Software Engineer - II",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7300207/uber-software-engineer-ii-se-2-bangalore-wyl8/",
+        "base": 40.0,
+        "total": 60.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7286689,
+        "creation_date": "2025-10-19",
+        "company": "PhonePe",
+        "role": "Software Engineer",
+        "yoe": 1,
+        "location": "Pune",
+        "interview_exp": "https://leetcode.com/discuss/post/7286629/phonepe-se-1-3y-interview-experience-by-qdo0q/",
+        "base": 22.0,
+        "total": 43.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7286363,
+        "creation_date": "2025-10-19",
+        "company": "Adobe",
+        "role": "SSE Computer Scientist",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 34.0,
+        "total": 66.0,
+        "mapped_role": "SSE Computer Scientist",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7285451,
+        "creation_date": "2025-10-19",
+        "company": "Uber",
+        "role": "SDE2",
+        "yoe": 2,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 49.0,
+        "total": 80.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7283770,
         "creation_date": "2025-10-18",
         "company": "Microsoft",
