@@ -1,5 +1,44 @@
 [
     {
+        "id": 7335510,
+        "creation_date": "2025-11-08",
+        "company": "Netgear",
+        "role": "SDE-II",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 26.0,
+        "total": 26.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7334190,
+        "creation_date": "2025-11-08",
+        "company": "Microsoft",
+        "role": "Software Engineer II",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 40.0,
+        "total": 76.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7330779,
+        "creation_date": "2025-11-06",
+        "company": "Morgan stanley",
+        "role": "Associate",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 28.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7327128,
         "creation_date": "2025-11-04",
         "company": "Navi",
