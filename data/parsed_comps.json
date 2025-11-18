@@ -1,5 +1,31 @@
 [
     {
+        "id": 7340067,
+        "creation_date": "2025-11-10",
+        "company": "Google",
+        "role": "SWE III - L4",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 38.0,
+        "total": 79.0,
+        "mapped_role": "SWE III - L4",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7339649,
+        "creation_date": "2025-11-10",
+        "company": "Blueoptima",
+        "role": "Senior Java Web Backend Engineer",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 28.0,
+        "mapped_role": "Senior Java Web Backend Engineer",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7335510,
         "creation_date": "2025-11-08",
         "company": "Netgear",
