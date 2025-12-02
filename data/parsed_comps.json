@@ -1,5 +1,57 @@
 [
     {
+        "id": 7369583,
+        "creation_date": "2025-11-23",
+        "company": "Morgan stanley",
+        "role": "P2 Associate",
+        "yoe": 2,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7372939/morgan-stanley-interview-experience-back-pqc9/",
+        "base": 21.0,
+        "total": 31.66,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7369515,
+        "creation_date": "2025-11-23",
+        "company": "Rsa security",
+        "role": "Backend Engineer",
+        "yoe": 2,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 16.82,
+        "total": 18.6,
+        "mapped_role": "Backend Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7369189,
+        "creation_date": "2025-11-23",
+        "company": "Capital one",
+        "role": "SDE",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 26.0,
+        "total": 36.5,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7368690,
+        "creation_date": "2025-11-23",
+        "company": "Amazon",
+        "role": "SDE 2",
+        "yoe": 6,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 100.0,
+        "total": 100.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7364327,
         "creation_date": "2025-11-21",
         "company": "JP Morgan Chase",
