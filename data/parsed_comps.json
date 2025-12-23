@@ -1,5 +1,57 @@
 [
     {
+        "id": 7418513,
+        "creation_date": "2025-12-16",
+        "company": "Samsung",
+        "role": "Lead Engineer",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 27.1,
+        "total": 37.4,
+        "mapped_role": "Lead Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7414206,
+        "creation_date": "2025-12-14",
+        "company": "Oracle",
+        "role": "IC-2",
+        "yoe": 2,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 25.0,
+        "total": 37.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7414123,
+        "creation_date": "2025-12-14",
+        "company": "Amazon",
+        "role": "SDE2",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 45.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7412025,
+        "creation_date": "2025-12-14",
+        "company": "Strand life sciences",
+        "role": "Associate Software Engineer",
+        "yoe": 0,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 15.0,
+        "total": 15.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7408929,
         "creation_date": "2025-12-12",
         "company": "Novartis healthcare",
