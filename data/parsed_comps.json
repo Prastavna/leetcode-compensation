@@ -1,5 +1,31 @@
 [
     {
+        "id": 7450620,
+        "creation_date": "2025-12-30",
+        "company": "Microsoft",
+        "role": "Data Scientist",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 35.0,
+        "total": 60.0,
+        "mapped_role": "Data Scientist",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7444638,
+        "creation_date": "2025-12-28",
+        "company": "JP Morgan Chase",
+        "role": "SDE-2",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 19.5,
+        "total": 19.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7443315,
         "creation_date": "2025-12-27",
         "company": "Oracle",
