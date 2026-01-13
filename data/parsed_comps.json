@@ -1,5 +1,31 @@
 [
     {
+        "id": 7466074,
+        "creation_date": "2026-01-04",
+        "company": "Trilogy innovations",
+        "role": "SDE-1",
+        "yoe": 0,
+        "location": "Remote/WFH",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 32.5,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7464674,
+        "creation_date": "2026-01-04",
+        "company": "EPAM Systems",
+        "role": "Senior Software Engineer",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 30.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7462537,
         "creation_date": "2026-01-03",
         "company": "Microsoft",
