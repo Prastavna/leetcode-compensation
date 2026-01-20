@@ -1,5 +1,31 @@
 [
     {
+        "id": 7490212,
+        "creation_date": "2026-01-12",
+        "company": "Microsoft",
+        "role": "L61",
+        "yoe": 6,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 33.0,
+        "total": 40.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7484904,
+        "creation_date": "2026-01-11",
+        "company": "PayPal",
+        "role": "Software Engineer 1",
+        "yoe": 0,
+        "location": "Bangalore/Karnataka/India",
+        "interview_exp": "N/A",
+        "base": 16.5,
+        "total": 29.82,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7483778,
         "creation_date": "2026-01-10",
         "company": "Oracle",
