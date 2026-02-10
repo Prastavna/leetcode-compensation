@@ -1,5 +1,18 @@
 [
     {
+        "id": 7546263,
+        "creation_date": "2026-02-02",
+        "company": "Vegapay",
+        "role": "SDE 2",
+        "yoe": 2,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 42.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7537147,
         "creation_date": "2026-01-30",
         "company": "Microsoft",
