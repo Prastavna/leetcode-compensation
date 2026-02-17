@@ -1,5 +1,31 @@
 [
     {
+        "id": 7567605,
+        "creation_date": "2026-02-10",
+        "company": "Alteryx",
+        "role": "SDE 2",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 30.64,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7565615,
+        "creation_date": "2026-02-09",
+        "company": "Salesforce",
+        "role": "MTS",
+        "yoe": 0,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7558469/salesforce-vs-bitgo-compensation-by-jeth-holo/",
+        "base": 32.0,
+        "total": 32.0,
+        "mapped_role": "MTS I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7560183,
         "creation_date": "2026-02-07",
         "company": "Amazon",
