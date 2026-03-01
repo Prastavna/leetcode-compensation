@@ -281,7 +281,7 @@ function displayOffers(page) {
         const idCell = row.insertCell();
         idCell.innerHTML = `
         <p>
-            <abbr title="attribute">
+            <abbr title="${offer.id}">
                 <a class="link-secondary" target="_blank" href="https://leetcode.com/discuss/post/${offer.id}">
                     ${offer.id}
                 </a>
