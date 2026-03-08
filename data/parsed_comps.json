@@ -1,5 +1,44 @@
 [
     {
+        "id": 7618157,
+        "creation_date": "2026-03-01",
+        "company": "Booking holdings",
+        "role": "SRE 2",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 39.0,
+        "total": 43.8,
+        "mapped_role": "SRE 2",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7618157,
+        "creation_date": "2026-03-01",
+        "company": "Ebay",
+        "role": "Software Engineer 3",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 33.0,
+        "total": 37.8,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7616697,
+        "creation_date": "2026-03-01",
+        "company": "Salesforce",
+        "role": "MTS",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 32.0,
+        "mapped_role": "MTS I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7614849,
         "creation_date": "2026-02-28",
         "company": "Q2",
