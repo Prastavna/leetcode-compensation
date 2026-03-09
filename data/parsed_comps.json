@@ -1,5 +1,44 @@
 [
     {
+        "id": 7620403,
+        "creation_date": "2026-03-02",
+        "company": "Goldman Sachs",
+        "role": "Analyst(SDE 1)",
+        "yoe": 3,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 23.0,
+        "total": 29.85,
+        "mapped_role": "Analyst",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7620230,
+        "creation_date": "2026-03-02",
+        "company": "Setu",
+        "role": "SDE 2",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 20.0,
+        "total": 21.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7618891,
+        "creation_date": "2026-03-02",
+        "company": "Uber",
+        "role": "L4",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 46.0,
+        "total": 78.7,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7618157,
         "creation_date": "2026-03-01",
         "company": "Booking holdings",
