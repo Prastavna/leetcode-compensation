@@ -186,6 +186,7 @@ min_total_offer = 3
 - [x] **Advanced filters** for YoE, Compensation ranges
 - [x] **Search functionality** for Companies and Locations
 - [x] **Responsive design** for mobile and desktop
+- [x] **Data export** - CSV export functionality
 
 ### Automation
 - [x] **Scheduled updates** via GitHub Actions (bi-weekly)
@@ -196,7 +197,7 @@ min_total_offer = 3
 ## Roadmap
 
 ### Upcoming Features
-- [ ] **Data export** - CSV/Excel export functionality
+(No upcoming features currently planned)
 
 ## Development
 

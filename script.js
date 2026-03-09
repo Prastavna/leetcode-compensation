@@ -392,14 +392,55 @@ function countCompanies(data) {
 }
 
 function sortAndSliceData(companyCounts) {
-    const sortedData = Object.entries(companyCounts)
-        .sort(([, a], [, b]) => b - a)
-        .slice(0, 10);
+     const sortedData = Object.entries(companyCounts)
+         .sort(([, a], [, b]) => b - a)
+         .slice(0, 10);
 
-    const categories = sortedData.map(([company]) => company);
-    const counts = sortedData.map(([, count]) => count);
+     const categories = sortedData.map(([company]) => company);
+     const counts = sortedData.map(([, count]) => count);
 
-    return [categories, counts];
+     return [categories, counts];
+ }
+
+// Download functionality
+function downloadAsCSV() {
+    if (filteredOffers.length === 0) {
+        alert('No offers to download');
+        return;
+    }
+
+    // Define CSV headers
+    const headers = ['ID', 'Company', 'Location', 'Role', 'YoE', 'Total Compensation (LPA)', 'Base Compensation (LPA)', 'Date Posted'];
+    
+    // Build CSV content
+    let csvContent = headers.join(',') + '\n';
+    
+    filteredOffers.forEach(offer => {
+        const row = [
+            offer.id,
+            `"${offer.company}"`,
+            `"${offer.location}"`,
+            `"${offer.mapped_role}"`,
+            offer.yoe,
+            offer.total,
+            offer.base,
+            offer.creation_date
+        ];
+        csvContent += row.join(',') + '\n';
+    });
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `leetcode-compensation-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
@@ -517,6 +558,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         const searchInput = document.getElementById('searchInput').value;
         filterOffersByCompany(searchInput);
     });
+
+    // Download button event listener
+    document.getElementById('downloadButton').addEventListener('click', downloadAsCSV);
 
     // Search button event listener
     document.getElementById('filter').addEventListener('click', () => {
