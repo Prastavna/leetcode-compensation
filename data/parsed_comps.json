@@ -1,5 +1,18 @@
 [
     {
+        "id": 7623289,
+        "creation_date": "2026-03-03",
+        "company": "Ebay",
+        "role": "MTS1",
+        "yoe": 6,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 50.0,
+        "total": 68.5,
+        "mapped_role": "MTS I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7620403,
         "creation_date": "2026-03-02",
         "company": "Goldman Sachs",
