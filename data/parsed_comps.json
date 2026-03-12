@@ -1,5 +1,31 @@
 [
     {
+        "id": 7625944,
+        "creation_date": "2026-03-05",
+        "company": "Intuit",
+        "role": "SDE-1",
+        "yoe": 1,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 21.0,
+        "total": 34.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7625739,
+        "creation_date": "2026-03-04",
+        "company": "Jumpcloud",
+        "role": "SDE-3",
+        "yoe": 5,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 36.0,
+        "total": 36.0,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7623289,
         "creation_date": "2026-03-03",
         "company": "Ebay",
