@@ -1,5 +1,31 @@
 [
     {
+        "id": 7639426,
+        "creation_date": "2026-03-10",
+        "company": "Wio bank",
+        "role": "SSE",
+        "yoe": 6,
+        "location": "NCR",
+        "interview_exp": "N/A",
+        "base": 60.0,
+        "total": 65.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7638674,
+        "creation_date": "2026-03-10",
+        "company": "Uber",
+        "role": "SDE 2",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 43.5,
+        "total": 78.7,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7625944,
         "creation_date": "2026-03-05",
         "company": "Intuit",
