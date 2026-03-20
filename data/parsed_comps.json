@@ -1,5 +1,44 @@
 [
     {
+        "id": 7645233,
+        "creation_date": "2026-03-13",
+        "company": "Big 4",
+        "role": "Data Engineer",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 22.0,
+        "mapped_role": "Data Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7643062,
+        "creation_date": "2026-03-12",
+        "company": "Sap labs india",
+        "role": "Developer T2 (SAP commerce cloud team. Java, Cloud)",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 25.0,
+        "total": 28.0,
+        "mapped_role": "Developer T2 (SAP commerce cloud team. Java, Cloud)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7643062,
+        "creation_date": "2026-03-12",
+        "company": "Morgan stanley",
+        "role": "Associate (Java backend, Tax team)",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 25.0,
+        "total": 28.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7639426,
         "creation_date": "2026-03-10",
         "company": "Wio bank",
