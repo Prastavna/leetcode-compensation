@@ -1,5 +1,31 @@
 [
     {
+        "id": 7652163,
+        "creation_date": "2026-03-16",
+        "company": "Wex",
+        "role": "SDE2",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 30.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7651615,
+        "creation_date": "2026-03-16",
+        "company": "Microsoft",
+        "role": "L63",
+        "yoe": 8,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 50.0,
+        "total": 60.0,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7645233,
         "creation_date": "2026-03-13",
         "company": "Big 4",
