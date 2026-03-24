@@ -1,5 +1,44 @@
 [
     {
+        "id": 7655025,
+        "creation_date": "2026-03-17",
+        "company": "Razorpay",
+        "role": "SDE-2",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 27.0,
+        "total": 33.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7653817,
+        "creation_date": "2026-03-17",
+        "company": "Piramal finance",
+        "role": "SDE-2",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 44.0,
+        "total": 50.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7653817,
+        "creation_date": "2026-03-17",
+        "company": "Arctic wolf",
+        "role": "SDE-2",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 42.0,
+        "total": 45.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7652163,
         "creation_date": "2026-03-16",
         "company": "Wex",
