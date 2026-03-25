@@ -1,5 +1,18 @@
 [
     {
+        "id": 7655464,
+        "creation_date": "2026-03-18",
+        "company": "Microsoft",
+        "role": "IC3",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7619101/",
+        "base": 33.4,
+        "total": 57.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7655025,
         "creation_date": "2026-03-17",
         "company": "Razorpay",
