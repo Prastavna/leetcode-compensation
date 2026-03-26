@@ -1,5 +1,18 @@
 [
     {
+        "id": 7670203,
+        "creation_date": "2026-03-19",
+        "company": "Amazon",
+        "role": "Software Development Engineer 2",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7670163/",
+        "base": 44.0,
+        "total": 66.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7655464,
         "creation_date": "2026-03-18",
         "company": "Microsoft",
