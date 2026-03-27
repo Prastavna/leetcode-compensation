@@ -1,5 +1,44 @@
 [
     {
+        "id": 7675318,
+        "creation_date": "2026-03-20",
+        "company": "Microsoft",
+        "role": "SDE 1",
+        "yoe": 1,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 21.0,
+        "total": 35.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7674766,
+        "creation_date": "2026-03-20",
+        "company": "NetApp",
+        "role": "MTS-2",
+        "yoe": 0,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 29.0,
+        "total": 36.0,
+        "mapped_role": "MTS II",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7673442,
+        "creation_date": "2026-03-20",
+        "company": "Visa",
+        "role": "Staff Software Engineer-UI",
+        "yoe": 8,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 41.0,
+        "total": 53.61,
+        "mapped_role": "Staff Software Engineer-UI",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7670203,
         "creation_date": "2026-03-19",
         "company": "Amazon",
