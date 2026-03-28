@@ -1,5 +1,44 @@
 [
     {
+        "id": 7678645,
+        "creation_date": "2026-03-21",
+        "company": "PayU",
+        "role": "Associate Software Engineer",
+        "yoe": 2,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 15.0,
+        "total": 16.5,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7676794,
+        "creation_date": "2026-03-21",
+        "company": "Salesforce",
+        "role": "MTS",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 44.0,
+        "mapped_role": "MTS I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7676729,
+        "creation_date": "2026-03-21",
+        "company": "PayPal",
+        "role": "Staff Engineer",
+        "yoe": 10,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 73.0,
+        "total": 116.0,
+        "mapped_role": "Staff Engineer",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7675318,
         "creation_date": "2026-03-20",
         "company": "Microsoft",
