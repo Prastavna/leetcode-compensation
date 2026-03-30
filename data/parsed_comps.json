@@ -1,5 +1,18 @@
 [
     {
+        "id": 7683411,
+        "creation_date": "2026-03-23",
+        "company": "Visa",
+        "role": "SSE",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 33.0,
+        "total": 44.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7678645,
         "creation_date": "2026-03-21",
         "company": "PayU",
