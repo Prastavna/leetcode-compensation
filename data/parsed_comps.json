@@ -1,5 +1,31 @@
 [
     {
+        "id": 7703090,
+        "creation_date": "2026-03-27",
+        "company": "Salesforce",
+        "role": "SMTS",
+        "yoe": 5,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 48.0,
+        "total": 72.0,
+        "mapped_role": "MTS II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7702072,
+        "creation_date": "2026-03-27",
+        "company": "Google",
+        "role": "L4",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 44.0,
+        "total": 74.8,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7698150,
         "creation_date": "2026-03-26",
         "company": "Microsoft",
