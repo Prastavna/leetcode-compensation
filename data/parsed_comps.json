@@ -1,5 +1,18 @@
 [
     {
+        "id": 7715814,
+        "creation_date": "2026-03-29",
+        "company": "AMD",
+        "role": "Sr. Software System Designer",
+        "yoe": 2,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 29.0,
+        "total": 29.0,
+        "mapped_role": "Sr. Software System Designer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7703090,
         "creation_date": "2026-03-27",
         "company": "Salesforce",
