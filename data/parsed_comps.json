@@ -1,5 +1,31 @@
 [
     {
+        "id": 7754949,
+        "creation_date": "2026-04-02",
+        "company": "Amazon",
+        "role": "L5",
+        "yoe": 0,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 45.0,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7748592,
+        "creation_date": "2026-04-02",
+        "company": "Sprinklr",
+        "role": "Senior SDE",
+        "yoe": 4,
+        "location": "NCR/India",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 48.0,
+        "mapped_role": "Senior SDE",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7744514,
         "creation_date": "2026-04-01",
         "company": "Salesforce",
