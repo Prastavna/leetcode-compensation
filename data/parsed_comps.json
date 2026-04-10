@@ -1,5 +1,44 @@
 [
     {
+        "id": 7770540,
+        "creation_date": "2026-04-03",
+        "company": "Microsoft",
+        "role": "L62",
+        "yoe": 7,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 42.0,
+        "total": 42.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 7770051,
+        "creation_date": "2026-04-03",
+        "company": "Microsoft",
+        "role": "L62",
+        "yoe": 6,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 44.0,
+        "total": 72.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7766903,
+        "creation_date": "2026-04-03",
+        "company": "Salesforce",
+        "role": "Senior Member of Technical Staff (SMTS)",
+        "yoe": 8,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 53.0,
+        "total": 78.0,
+        "mapped_role": "Senior Member of Technical Staff (SMTS)",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7754949,
         "creation_date": "2026-04-02",
         "company": "Amazon",
