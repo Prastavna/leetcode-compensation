@@ -1,5 +1,31 @@
 [
     {
+        "id": 7772042,
+        "creation_date": "2026-04-04",
+        "company": "Inito",
+        "role": "Senior Software Engineer",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 55.0,
+        "total": 75.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 7772007,
+        "creation_date": "2026-04-04",
+        "company": "Mongodb",
+        "role": "SWE3",
+        "yoe": 6,
+        "location": "NCR",
+        "interview_exp": "N/A",
+        "base": 46.0,
+        "total": 49.09,
+        "mapped_role": "SWE3",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7770540,
         "creation_date": "2026-04-03",
         "company": "Microsoft",
