@@ -1,5 +1,31 @@
 [
     {
+        "id": 7806380,
+        "creation_date": "2026-04-07",
+        "company": "Eternal (district)",
+        "role": "SDE 2",
+        "yoe": 3,
+        "location": "NCR",
+        "interview_exp": "N/A",
+        "base": 36.0,
+        "total": 50.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7806380,
+        "creation_date": "2026-04-07",
+        "company": "Ethos life technologies",
+        "role": "Software Engineer",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 56.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7772042,
         "creation_date": "2026-04-04",
         "company": "Inito",
