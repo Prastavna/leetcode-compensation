@@ -1,5 +1,31 @@
 [
     {
+        "id": 7831744,
+        "creation_date": "2026-04-08",
+        "company": "Oracle",
+        "role": "Senior Member of Technical Staff (SDE-3)",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/7356033/hashicorp-interview-process-sde-by-notsa-rcxm/",
+        "base": 41.0,
+        "total": 83.0,
+        "mapped_role": "Senior Member of Technical Staff (SDE-3)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7830340,
+        "creation_date": "2026-04-08",
+        "company": "Kotak Mahindra Bank",
+        "role": "SDE-2",
+        "yoe": 6,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 37.0,
+        "total": 80.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7806380,
         "creation_date": "2026-04-07",
         "company": "Eternal (district)",
