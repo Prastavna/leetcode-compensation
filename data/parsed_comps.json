@@ -1,5 +1,18 @@
 [
     {
+        "id": 7859731,
+        "creation_date": "2026-04-10",
+        "company": "Microsoft",
+        "role": "L62",
+        "yoe": 0,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 42.6,
+        "total": 71.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7840961,
         "creation_date": "2026-04-09",
         "company": "Salesforce",
