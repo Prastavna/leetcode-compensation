@@ -1,5 +1,31 @@
 [
     {
+        "id": 7875182,
+        "creation_date": "2026-04-11",
+        "company": "Typeface ai",
+        "role": "Frontend",
+        "yoe": 1,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 23.0,
+        "total": 25.0,
+        "mapped_role": "Frontend",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7868487,
+        "creation_date": "2026-04-11",
+        "company": "Amazon",
+        "role": "SDE2",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 65.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7859731,
         "creation_date": "2026-04-10",
         "company": "Microsoft",
