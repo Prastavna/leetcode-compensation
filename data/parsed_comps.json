@@ -1,5 +1,57 @@
 [
     {
+        "id": 7881722,
+        "creation_date": "2026-04-12",
+        "company": "Nielsen",
+        "role": "MTS II (ML Engineer)",
+        "yoe": 3,
+        "location": "NCR",
+        "interview_exp": "N/A",
+        "base": 28.5,
+        "total": 28.5,
+        "mapped_role": "MTS II (ML Engineer)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7881722,
+        "creation_date": "2026-04-12",
+        "company": "Qualcomm",
+        "role": "Senior Engineer (AI/ML \u2013 System Level / On-device AI)",
+        "yoe": 3,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 28.5,
+        "total": 46.0,
+        "mapped_role": "Senior Engineer (AI/ML \u2013 System Level / On-device AI)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7878487,
+        "creation_date": "2026-04-12",
+        "company": "Amazon",
+        "role": "SDE2",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 44.0,
+        "total": 62.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 7877753,
+        "creation_date": "2026-04-12",
+        "company": "Publicis Sapient",
+        "role": "Senior Associate Technology L1",
+        "yoe": 4,
+        "location": "Pune",
+        "interview_exp": "https://leetcode.com/discuss/post/7509276/publicis-sapient-sat-l1-interview-experi-5o00/",
+        "base": 24.0,
+        "total": 24.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7875182,
         "creation_date": "2026-04-11",
         "company": "Typeface ai",
