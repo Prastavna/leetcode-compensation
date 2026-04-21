@@ -1,5 +1,18 @@
 [
     {
+        "id": 7901539,
+        "creation_date": "2026-04-14",
+        "company": "Cloudflare",
+        "role": "SSE",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 60.0,
+        "total": 79.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 7881722,
         "creation_date": "2026-04-12",
         "company": "Nielsen",
