@@ -1,5 +1,31 @@
 [
     {
+        "id": 7927823,
+        "creation_date": "2026-04-15",
+        "company": "Walmart",
+        "role": "SSE",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 41.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7926587,
+        "creation_date": "2026-04-15",
+        "company": "PhonePe",
+        "role": "SSE",
+        "yoe": 9,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 34.0,
+        "total": 51.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 7901539,
         "creation_date": "2026-04-14",
         "company": "Cloudflare",
