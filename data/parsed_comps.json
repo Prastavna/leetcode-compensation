@@ -1,5 +1,31 @@
 [
     {
+        "id": 7980642,
+        "creation_date": "2026-04-18",
+        "company": "Cisco",
+        "role": "SDE2 (G6)",
+        "yoe": 0,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 21.0,
+        "total": 21.0,
+        "mapped_role": "SDE2 (G6)",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 7974440,
+        "creation_date": "2026-04-18",
+        "company": "Juspay",
+        "role": "backend software developer",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 14.0,
+        "total": 15.0,
+        "mapped_role": "backend software developer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 7953230,
         "creation_date": "2026-04-17",
         "company": "Zomato",
