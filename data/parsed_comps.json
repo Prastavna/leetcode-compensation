@@ -1,5 +1,31 @@
 [
     {
+        "id": 8076680,
+        "creation_date": "2026-04-23",
+        "company": "Okta",
+        "role": "Staff SE",
+        "yoe": 11,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 60.0,
+        "total": 80.0,
+        "mapped_role": "Staff SE",
+        "mapped_yoe": "Senior + (11+)"
+    },
+    {
+        "id": 8064291,
+        "creation_date": "2026-04-23",
+        "company": "PayU",
+        "role": "SDE II",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "https://leetcode.com/discuss/post/7851983/payu-interview-experience-software-engin-x8p5/",
+        "base": 21.5,
+        "total": 21.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8029202,
         "creation_date": "2026-04-21",
         "company": "Amazon",
