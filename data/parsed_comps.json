@@ -1,5 +1,18 @@
 [
     {
+        "id": 8115085,
+        "creation_date": "2026-04-30",
+        "company": "Uber",
+        "role": "SDE-2",
+        "yoe": 0,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/8155118/uber-sde-2-full-stack-selected-bangalore-pvs6/",
+        "base": 42.0,
+        "total": 67.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8112539,
         "creation_date": "2026-04-29",
         "company": "Walmart global tech (india)",
