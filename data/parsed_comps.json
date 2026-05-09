@@ -1,5 +1,18 @@
 [
     {
+        "id": 8131115,
+        "creation_date": "2026-05-02",
+        "company": "Amazon",
+        "role": "Applied Scientist 1",
+        "yoe": 0,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 84.0,
+        "mapped_role": "Applied Scientist 1",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8115085,
         "creation_date": "2026-04-30",
         "company": "Uber",
