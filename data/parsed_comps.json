@@ -1,5 +1,31 @@
 [
     {
+        "id": 8146207,
+        "creation_date": "2026-05-05",
+        "company": "Arcesium",
+        "role": "Senior Software Engineer - Backend",
+        "yoe": 4,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 31.0,
+        "mapped_role": "Senior Software Engineer - Backend",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8145649,
+        "creation_date": "2026-05-05",
+        "company": "Ebay",
+        "role": "SE-2 Android",
+        "yoe": 0,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 24.0,
+        "mapped_role": "SE-2 Android",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8131115,
         "creation_date": "2026-05-02",
         "company": "Amazon",
