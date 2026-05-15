@@ -1,5 +1,44 @@
 [
     {
+        "id": 8173950,
+        "creation_date": "2026-05-08",
+        "company": "Uniphore",
+        "role": "Staff Software Engineer",
+        "yoe": 10,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 60.0,
+        "total": 74.0,
+        "mapped_role": "Staff Engineer",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8173868,
+        "creation_date": "2026-05-08",
+        "company": "Tekion",
+        "role": "SSE",
+        "yoe": 6,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 56.0,
+        "total": 56.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8170184,
+        "creation_date": "2026-05-08",
+        "company": "Goldman Sachs",
+        "role": "Analyst",
+        "yoe": 1,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 26.0,
+        "total": 32.85,
+        "mapped_role": "Analyst",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8154835,
         "creation_date": "2026-05-06",
         "company": "Microsoft",
