@@ -1,5 +1,31 @@
 [
     {
+        "id": 8195901,
+        "creation_date": "2026-05-11",
+        "company": "Kotak 811",
+        "role": "SDE 2",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 21.0,
+        "total": 27.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8192136,
+        "creation_date": "2026-05-11",
+        "company": "Microsoft",
+        "role": "SDE2 (L62)",
+        "yoe": 5,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 80.5,
+        "total": 80.5,
+        "mapped_role": "SDE2 (L62)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8173950,
         "creation_date": "2026-05-08",
         "company": "Uniphore",
