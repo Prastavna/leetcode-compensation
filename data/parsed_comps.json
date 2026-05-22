@@ -1,5 +1,44 @@
 [
     {
+        "id": 8240755,
+        "creation_date": "2026-05-15",
+        "company": "NetApp",
+        "role": "MTS 3",
+        "yoe": 8,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 41.0,
+        "total": 50.0,
+        "mapped_role": "MTS III",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8234676,
+        "creation_date": "2026-05-15",
+        "company": "Microsoft",
+        "role": "L61",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 31.0,
+        "total": 51.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8234198,
+        "creation_date": "2026-05-15",
+        "company": "Microsoft",
+        "role": "Software Engineer - 2 (L61)",
+        "yoe": 5,
+        "location": "NCR/India",
+        "interview_exp": "N/A",
+        "base": 34.5,
+        "total": 63.0,
+        "mapped_role": "Software Engineer - 2 (L61)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8215014,
         "creation_date": "2026-05-13",
         "company": "Nielsen",
