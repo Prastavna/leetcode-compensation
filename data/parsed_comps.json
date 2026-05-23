@@ -1,5 +1,31 @@
 [
     {
+        "id": 8249205,
+        "creation_date": "2026-05-16",
+        "company": "Qualcomm",
+        "role": "Senior AI Engineer",
+        "yoe": 3,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 32.5,
+        "mapped_role": "Senior AI Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8245638,
+        "creation_date": "2026-05-16",
+        "company": "JP Morgan Chase",
+        "role": "SDE 2",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 29.0,
+        "total": 32.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8240755,
         "creation_date": "2026-05-15",
         "company": "NetApp",
