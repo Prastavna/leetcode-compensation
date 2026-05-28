@@ -1,5 +1,18 @@
 [
     {
+        "id": 8284079,
+        "creation_date": "2026-05-21",
+        "company": "NetApp",
+        "role": "Software Engineer",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 38.0,
+        "total": 46.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8278327,
         "creation_date": "2026-05-19",
         "company": "Rippling",
