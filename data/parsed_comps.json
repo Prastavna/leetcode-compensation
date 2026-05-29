@@ -1,5 +1,31 @@
 [
     {
+        "id": 8286166,
+        "creation_date": "2026-05-22",
+        "company": "Searce",
+        "role": "Machine Learning Engineer",
+        "yoe": 0,
+        "location": "Pune",
+        "interview_exp": "https://leetcode.com/discuss/post/6973035/google-first-round-swe-iii-ml-bengaluru-d9rdx/",
+        "base": 2.8,
+        "total": 13.0,
+        "mapped_role": "Machine Learning Engineer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8285671,
+        "creation_date": "2026-05-22",
+        "company": "Crowdstrike",
+        "role": "Senior software Engineer I",
+        "yoe": 11,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 70.0,
+        "total": 105.0,
+        "mapped_role": "Senior software Engineer I",
+        "mapped_yoe": "Senior + (11+)"
+    },
+    {
         "id": 8284079,
         "creation_date": "2026-05-21",
         "company": "NetApp",
