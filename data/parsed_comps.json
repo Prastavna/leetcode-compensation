@@ -1,5 +1,18 @@
 [
     {
+        "id": 8295640,
+        "creation_date": "2026-05-26",
+        "company": "Titan (directi)",
+        "role": "SDE 1",
+        "yoe": 0,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 20.0,
+        "total": 22.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8293033,
         "creation_date": "2026-05-25",
         "company": "Walmart india",
