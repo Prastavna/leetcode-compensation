@@ -1,5 +1,18 @@
 [
     {
+        "id": 8296943,
+        "creation_date": "2026-05-27",
+        "company": "Alteryx",
+        "role": "Security Analyst",
+        "yoe": 0,
+        "location": "Remote/WFH",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 73.0,
+        "mapped_role": "Analyst",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8295640,
         "creation_date": "2026-05-26",
         "company": "Titan (directi)",
