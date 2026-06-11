@@ -1,5 +1,31 @@
 [
     {
+        "id": 8312878,
+        "creation_date": "2026-06-04",
+        "company": "Singlestore",
+        "role": "SDE-1",
+        "yoe": 1,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 32.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8312157,
+        "creation_date": "2026-06-04",
+        "company": "Cloudera",
+        "role": "SSE",
+        "yoe": 5,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 45.5,
+        "total": 71.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8311607,
         "creation_date": "2026-06-03",
         "company": "Aspire app",
