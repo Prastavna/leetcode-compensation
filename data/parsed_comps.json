@@ -1,5 +1,18 @@
 [
     {
+        "id": 8315883,
+        "creation_date": "2026-06-05",
+        "company": "Amazon",
+        "role": "Software Development Engineer II (SDE II, L5)",
+        "yoe": 0,
+        "location": "Hyderabad/India",
+        "interview_exp": "N/A",
+        "base": 43.0,
+        "total": 64.0,
+        "mapped_role": "Software Development Engineer II (SDE II, L5)",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8312878,
         "creation_date": "2026-06-04",
         "company": "Singlestore",
