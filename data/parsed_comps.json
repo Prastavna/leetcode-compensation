@@ -1,5 +1,31 @@
 [
     {
+        "id": 8318274,
+        "creation_date": "2026-06-06",
+        "company": "Jfrog",
+        "role": "Software Engineer",
+        "yoe": 2,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 40.0,
+        "total": 50.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8317147,
+        "creation_date": "2026-06-06",
+        "company": "Arcesium",
+        "role": "SDET",
+        "yoe": 1,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 7.2,
+        "total": 9.2,
+        "mapped_role": "SDET",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8315883,
         "creation_date": "2026-06-05",
         "company": "Amazon",
