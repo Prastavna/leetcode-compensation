@@ -1,5 +1,18 @@
 [
     {
+        "id": 8319181,
+        "creation_date": "2026-06-07",
+        "company": "Slice",
+        "role": "SDE 2",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 58.0,
+        "total": 58.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8318274,
         "creation_date": "2026-06-06",
         "company": "Jfrog",
