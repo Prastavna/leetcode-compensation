@@ -1,5 +1,18 @@
 [
     {
+        "id": 8334015,
+        "creation_date": "2026-06-14",
+        "company": "Juniper square",
+        "role": "Software Engineer 1",
+        "yoe": 0,
+        "location": "Remote/WFH/Bangalore",
+        "interview_exp": "N/A",
+        "base": 15.0,
+        "total": 15.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8331559,
         "creation_date": "2026-06-13",
         "company": "Blinkit",
