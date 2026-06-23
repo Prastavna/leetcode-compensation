@@ -1,5 +1,31 @@
 [
     {
+        "id": 8338909,
+        "creation_date": "2026-06-16",
+        "company": "Altimetrik",
+        "role": "Tech Lead",
+        "yoe": 9,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 52.28,
+        "total": 52.28,
+        "mapped_role": "Tech Lead",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8338904,
+        "creation_date": "2026-06-16",
+        "company": "Publicis Sapient",
+        "role": "Senior Associate Technology L2",
+        "yoe": 9,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 44.5,
+        "total": 44.48,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8334015,
         "creation_date": "2026-06-14",
         "company": "Juniper square",
