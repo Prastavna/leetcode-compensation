@@ -1,5 +1,44 @@
 [
     {
+        "id": 8342998,
+        "creation_date": "2026-06-18",
+        "company": "Adani digital labs",
+        "role": "Associate Software Engineer",
+        "yoe": 0,
+        "location": "NCR",
+        "interview_exp": "N/A",
+        "base": 7.0,
+        "total": 7.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8342974,
+        "creation_date": "2026-06-18",
+        "company": "Teradata",
+        "role": "Senior AI Engineer",
+        "yoe": 3,
+        "location": "Pune/India",
+        "interview_exp": "N/A",
+        "base": 39.0,
+        "total": 44.54,
+        "mapped_role": "Senior AI Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8342440,
+        "creation_date": "2026-06-18",
+        "company": "Jiostar",
+        "role": "SDE2",
+        "yoe": 3,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 31.0,
+        "total": 31.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8338909,
         "creation_date": "2026-06-16",
         "company": "Altimetrik",
