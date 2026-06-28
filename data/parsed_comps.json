@@ -1,5 +1,18 @@
 [
     {
+        "id": 8348727,
+        "creation_date": "2026-06-21",
+        "company": "Goldman Sachs",
+        "role": "Associate",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 40.0,
+        "total": 42.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8342998,
         "creation_date": "2026-06-18",
         "company": "Adani digital labs",
