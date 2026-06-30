@@ -1,5 +1,31 @@
 [
     {
+        "id": 8354626,
+        "creation_date": "2026-06-23",
+        "company": "Adyen",
+        "role": "Software Engineer",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 44.5,
+        "total": 54.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8352774,
+        "creation_date": "2026-06-23",
+        "company": "Mercans",
+        "role": "Sr BackEnd Developer",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 32.0,
+        "mapped_role": "Sr BackEnd Developer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8348727,
         "creation_date": "2026-06-21",
         "company": "Goldman Sachs",
