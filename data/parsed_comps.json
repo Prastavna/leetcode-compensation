@@ -1,5 +1,18 @@
 [
     {
+        "id": 8360419,
+        "creation_date": "2026-06-27",
+        "company": "Microsoft",
+        "role": "SDE 1 (L 59)",
+        "yoe": 0,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 18.05,
+        "total": 31.0,
+        "mapped_role": "SDE 1 (L 59)",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8359066,
         "creation_date": "2026-06-26",
         "company": "Flipkart",
