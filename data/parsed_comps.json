@@ -1,5 +1,31 @@
 [
     {
+        "id": 8366287,
+        "creation_date": "2026-06-29",
+        "company": "Sigmoid",
+        "role": "SDE 3",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 45.0,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8365272,
+        "creation_date": "2026-06-29",
+        "company": "Booking holdings",
+        "role": "SDE 1",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 38.0,
+        "total": 41.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8360419,
         "creation_date": "2026-06-27",
         "company": "Microsoft",
