@@ -1,5 +1,31 @@
 [
     {
+        "id": 8368378,
+        "creation_date": "2026-06-30",
+        "company": "Ebay",
+        "role": "MTS",
+        "yoe": 5,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 52.0,
+        "total": 77.8,
+        "mapped_role": "MTS I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8367849,
+        "creation_date": "2026-06-30",
+        "company": "Microsoft",
+        "role": "L61",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 24.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8366287,
         "creation_date": "2026-06-29",
         "company": "Sigmoid",
