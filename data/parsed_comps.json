@@ -1,5 +1,44 @@
 [
     {
+        "id": 8372384,
+        "creation_date": "2026-07-02",
+        "company": "Well-known travel tech company",
+        "role": "AI Engineer",
+        "yoe": 1,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 17.0,
+        "total": 17.0,
+        "mapped_role": "AI Engineer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8372275,
+        "creation_date": "2026-07-02",
+        "company": "Goldman Sachs",
+        "role": "Associate",
+        "yoe": 4,
+        "location": "N/A",
+        "interview_exp": "N/A",
+        "base": 38.5,
+        "total": 43.0,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8372092,
+        "creation_date": "2026-07-02",
+        "company": "Coindcx",
+        "role": "SDE-1",
+        "yoe": 1,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 24.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8368378,
         "creation_date": "2026-06-30",
         "company": "Ebay",
