@@ -1,5 +1,18 @@
 [
     {
+        "id": 8380036,
+        "creation_date": "2026-07-06",
+        "company": "Zoominfo",
+        "role": "Senior Software Engineer (L4)",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/8379995/zoominfo-senior-software-engineer-l4-ban-hhzd/",
+        "base": 50.0,
+        "total": 55.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8372384,
         "creation_date": "2026-07-02",
         "company": "Well-known travel tech company",
