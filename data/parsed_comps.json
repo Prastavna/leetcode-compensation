@@ -1,5 +1,44 @@
 [
     {
+        "id": 8384004,
+        "creation_date": "2026-07-08",
+        "company": "Omnissa",
+        "role": "MTS-2",
+        "yoe": 2,
+        "location": "Bangalore/Karnataka",
+        "interview_exp": "https://leetcode.com/discuss/post/8386158/omnissa-formerly-vmware-mts-2-bengaluru-7sb5a/",
+        "base": 26.0,
+        "total": 26.0,
+        "mapped_role": "MTS II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8384004,
+        "creation_date": "2026-07-08",
+        "company": "Spring financial",
+        "role": "SDE -2",
+        "yoe": 2,
+        "location": "NCR/Haryana",
+        "interview_exp": "https://leetcode.com/discuss/post/8386158/omnissa-formerly-vmware-mts-2-bengaluru-7sb5a/",
+        "base": 27.0,
+        "total": 27.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8384004,
+        "creation_date": "2026-07-08",
+        "company": "Spotnana",
+        "role": "Backend Engineer",
+        "yoe": 2,
+        "location": "Bangalore/Karnataka",
+        "interview_exp": "https://leetcode.com/discuss/post/8386158/omnissa-formerly-vmware-mts-2-bengaluru-7sb5a/",
+        "base": 25.0,
+        "total": 25.0,
+        "mapped_role": "Backend Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8380036,
         "creation_date": "2026-07-06",
         "company": "Zoominfo",
