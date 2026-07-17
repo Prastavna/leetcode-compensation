@@ -1,5 +1,18 @@
 [
     {
+        "id": 8387992,
+        "creation_date": "2026-07-10",
+        "company": "Rippling",
+        "role": "Senior Software Engineer",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 100.0,
+        "total": 115.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8384004,
         "creation_date": "2026-07-08",
         "company": "Omnissa",
