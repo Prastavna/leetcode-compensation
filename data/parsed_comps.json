@@ -1,5 +1,18 @@
 [
     {
+        "id": 8397822,
+        "creation_date": "2026-07-15",
+        "company": "Qube research & technologies (qrt)",
+        "role": "Quantitative Technologist",
+        "yoe": 4,
+        "location": "Mumbai",
+        "interview_exp": "N/A",
+        "base": 61.0,
+        "total": 98.0,
+        "mapped_role": "Quantitative Technologist",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8389503,
         "creation_date": "2026-07-11",
         "company": "Target",
