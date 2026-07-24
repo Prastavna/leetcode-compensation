@@ -1,5 +1,44 @@
 [
     {
+        "id": 8403766,
+        "creation_date": "2026-07-17",
+        "company": "Booking holdings",
+        "role": "SDE 1",
+        "yoe": 4,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 38.0,
+        "total": 41.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8403054,
+        "creation_date": "2026-07-17",
+        "company": "Ebay",
+        "role": "SE-2",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 25.0,
+        "total": 33.15,
+        "mapped_role": "SE-2",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8402700,
+        "creation_date": "2026-07-17",
+        "company": "Rakuten india",
+        "role": "Senior Software Engineer",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 25.0,
+        "total": 25.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8401962,
         "creation_date": "2026-07-16",
         "company": "Optum",
