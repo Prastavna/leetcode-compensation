@@ -2,7 +2,10 @@ import os
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from functools import cache
 
+import openai
+from dotenv import load_dotenv
 from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
 from openai import OpenAI
@@ -14,11 +17,37 @@ from .helpers import retry_with_exp_backoff
 LEETCODE_GRAPHQL_URL = config["app"]["leetcode_graphql_url"]
 LAG_DAYS = config["app"]["lag_days"]
 
-# OpenAI client for parsing
-openai_client = OpenAI(
-    base_url="https://models.github.ai/inference",
-    api_key=os.getenv("GITHUB_TOKEN"),
+load_dotenv()
+
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+
+# Overload (503), rate limiting and network errors: the post should be retried on a later run.
+RETRYABLE_LLM_ERRORS = (
+    openai.InternalServerError,
+    openai.RateLimitError,
+    openai.APIConnectionError,  # includes APITimeoutError
 )
+
+# Misconfiguration (bad key, unknown model): abort the run instead of skipping every post.
+FATAL_LLM_ERRORS = (
+    openai.AuthenticationError,
+    openai.PermissionDeniedError,
+    openai.NotFoundError,
+)
+
+
+@cache
+def get_openai_client() -> OpenAI:
+    # Created lazily so scripts that never call the LLM (e.g. clean.py) don't need the key.
+    return OpenAI(
+        base_url=OPENROUTER_BASE_URL,
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        # Free tiers often answer 503/429; retry with backoff before giving up.
+        max_retries=4,
+        timeout=90,
+    )
+
 
 @dataclass
 class LeetCodePost:
@@ -252,12 +281,16 @@ def extract_interview_exp_from_content(content: str) -> str:
 
 
 def parse_compensation_with_openai(post_content: str) -> CompensationOffers | None:
-    """Parse compensation information from post content using OpenAI."""
+    """Parse compensation information from post content using an OpenRouter model.
+
+    Returns None when the post can't be parsed. Raises RETRYABLE_LLM_ERRORS and
+    FATAL_LLM_ERRORS so the caller can stop instead of losing the post.
+    """
     try:
         # Extract interview experience link using regex
         interview_exp = extract_interview_exp_from_content(post_content)
 
-        response = openai_client.chat.completions.parse(
+        response = get_openai_client().chat.completions.parse(
             messages=[
                 {
                     "role": "system",
@@ -268,7 +301,7 @@ def parse_compensation_with_openai(post_content: str) -> CompensationOffers | No
                     "content": post_content,
                 },
             ],
-            model="openai/gpt-4o-mini",
+            model=OPENROUTER_MODEL,
             temperature=0.1,
             max_tokens=4096 * 4,
             top_p=1,
@@ -283,6 +316,8 @@ def parse_compensation_with_openai(post_content: str) -> CompensationOffers | No
                 offer.interview_exp = interview_exp
 
         return parsed_offers
+    except (RETRYABLE_LLM_ERRORS + FATAL_LLM_ERRORS):
+        raise
     except Exception as e:
         print(f"OpenAI parsing error: {str(e)}")
         return None

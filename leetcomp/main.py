@@ -1,11 +1,11 @@
 try:
     from .parse import parse_posts
     from .refresh import refresh_posts
-    from .utils import config, truncate_raw_posts
+    from .utils import config, latest_parsed_date, truncate_raw_posts
 except ImportError:
     from parse import parse_posts
     from refresh import refresh_posts
-    from utils import config, truncate_raw_posts
+    from utils import config, latest_parsed_date, truncate_raw_posts
 
 
 def main():
@@ -20,7 +20,7 @@ def main():
     parse_posts(str(raw_file), str(parsed_file))
 
     print("\nStep 3: Cleaning up raw posts file...")
-    truncate_raw_posts(str(raw_file), keep_count=100)
+    truncate_raw_posts(str(raw_file), keep_count=100, keep_after=latest_parsed_date(str(parsed_file)))
 
     print("\nPipeline complete!")
 

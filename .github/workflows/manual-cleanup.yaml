@@ -16,7 +16,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  models: read
 
 jobs:
   manual-data-cleanup:
@@ -46,7 +45,7 @@ jobs:
 
     - name: Clean up specified posts
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       run: |
         cd leetcomp
         echo "Cleaning up post IDs: ${{ github.event.inputs.post_ids }}"
@@ -55,7 +54,7 @@ jobs:
     - name: Run full data refresh (if requested)
       if: ${{ github.event.inputs.run_refresh == 'true' }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       run: |
         cd leetcomp
         echo "Running full data refresh after cleanup..."

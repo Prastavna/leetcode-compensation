@@ -14,7 +14,7 @@
 
 - Fetching compensation data from Leetcode forums using GraphQL API
 - Automated weekly updates through GitHub Actions
-- Using LLMs (GitHub Models) for parsing and sanitizing structured data from posts
+- Using LLMs (free models via [OpenRouter](https://openrouter.ai)) for parsing and sanitizing structured data from posts
 - Intelligent data processing with mapping and aggregation
 - Automatic cleanup to maintain data quality and file sizes
 
@@ -64,8 +64,8 @@ pip install uv
    # Copy the sample environment file
    cp ../.env.sample ../.env
    
-   # Edit .env and add your GitHub token
-   GITHUB_TOKEN=your_github_token_here
+   # Edit .env and add your OpenRouter API key
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
    ```
 
 ## Usage
@@ -173,7 +173,7 @@ min_total_offer = 3
 
 ### Data Processing
 - [x] **Automated data fetching** from LeetCode forums via GraphQL API
-- [x] **LLM-powered parsing** using GitHub Models (GPT-4o-mini)
+- [x] **LLM-powered parsing** using OpenRouter (`nvidia/nemotron-3-super-120b-a12b:free`)
 - [x] **Smart data validation** with Pydantic models
 - [x] **Intelligent mapping** for companies, roles, and locations
 - [x] **Automatic cleanup** to maintain data quality and file sizes
@@ -228,12 +228,12 @@ The project uses modern Python tooling:
 
 ### Common Issues
 
-**GitHub Token Error:**
+**OpenRouter API Error:**
 ```
 Error: OpenAI parsing error: ...
 ```
-- Ensure your `GITHUB_TOKEN` is set correctly
-- Token needs access to GitHub Models
+- Ensure your `OPENROUTER_API_KEY` is set correctly (locally in `.env`, in CI as a repository secret)
+- Overloaded (503) or rate-limited (429) responses stop the run early; the remaining posts are retried on the next run
 
 **Import Errors:**
 ```
@@ -274,4 +274,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Original project by [kuutsav](https://github.com/kuutsav/leetcode-compensation)
 - LeetCode community for compensation data
-- GitHub Models for LLM parsing capabilities
+- OpenRouter for LLM parsing capabilities

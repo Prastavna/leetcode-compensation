@@ -17,6 +17,7 @@ from .helpers import (
     truncate_raw_posts,
 )
 from .leetcode_api import (
+    RETRYABLE_LLM_ERRORS,
     CompensationOffer,
     CompensationOffers,
     LeetCodeFetcher,
@@ -50,4 +51,5 @@ __all__ = [
     "LeetCodeFetcher",
     "is_within_lag_period",
     "parse_compensation_with_openai",
+    "RETRYABLE_LLM_ERRORS",
 ]

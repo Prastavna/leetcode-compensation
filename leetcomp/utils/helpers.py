@@ -92,8 +92,12 @@ def sort_and_truncate(file_path: str):
     print(f"Sorted {len(records)} records")
 
 
-def truncate_raw_posts(file_path: str, keep_count: int = 100):
-    """Keep only the latest N records in the raw posts file to prevent growth."""
+def truncate_raw_posts(file_path: str, keep_count: int = 100, keep_after: datetime | None = None):
+    """Keep only the latest N records in the raw posts file to prevent growth.
+
+    Records newer than `keep_after` (the latest parsed date) are always kept, so posts
+    that haven't been parsed yet are never dropped.
+    """
     if not Path(file_path).exists():
         print(f"File {file_path} does not exist")
         return
@@ -120,6 +124,13 @@ def truncate_raw_posts(file_path: str, keep_count: int = 100):
     )
 
     original_count = len(records)
+
+    unparsed_count = 0
+    if keep_after is not None:
+        unparsed_count = sum(
+            datetime.strptime(r["creation_date"], config["app"]["date_fmt"]) > keep_after for r in records
+        )
+    keep_count = max(keep_count, unparsed_count)
 
     # Keep only the latest records
     if len(records) > keep_count:
