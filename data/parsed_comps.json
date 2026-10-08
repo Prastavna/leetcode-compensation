@@ -1,5 +1,18 @@
 [
     {
+        "id": 8548549,
+        "creation_date": "2026-09-30",
+        "company": "Jiostar or jiohotstar",
+        "role": "SDE-2",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 38.0,
+        "total": 38.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8547534,
         "creation_date": "2026-09-29",
         "company": "Ebay",
