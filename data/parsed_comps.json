@@ -1,5 +1,18 @@
 [
     {
+        "id": 8549536,
+        "creation_date": "2026-10-01",
+        "company": "Coupang",
+        "role": "Staff",
+        "yoe": 7,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 90.0,
+        "total": 134.0,
+        "mapped_role": "Staff",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8548549,
         "creation_date": "2026-09-30",
         "company": "Jiostar or jiohotstar",
