@@ -1,5 +1,44 @@
 [
     {
+        "id": 8551252,
+        "creation_date": "2026-10-02",
+        "company": "Amazon",
+        "role": "SDE 2",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 46.0,
+        "total": 66.5,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8550170,
+        "creation_date": "2026-10-01",
+        "company": "NVIDIA",
+        "role": "Sr Platform Engineer",
+        "yoe": 10,
+        "location": "India",
+        "interview_exp": "https://leetcode.com/discuss/post/8560520/nvidia-platform-engineer-interview-exper-kae0/",
+        "base": 56.0,
+        "total": 96.0,
+        "mapped_role": "Sr Platform Engineer",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8550170,
+        "creation_date": "2026-10-01",
+        "company": "Atlassian",
+        "role": "P50 Infrastructure Engineer",
+        "yoe": 10,
+        "location": "N/A",
+        "interview_exp": "https://leetcode.com/discuss/post/8560520/nvidia-platform-engineer-interview-exper-kae0/",
+        "base": 76.0,
+        "total": 125.0,
+        "mapped_role": "P50 Infrastructure Engineer",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8549536,
         "creation_date": "2026-10-01",
         "company": "Coupang",
