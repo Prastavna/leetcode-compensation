@@ -1,5 +1,31 @@
 [
     {
+        "id": 8557929,
+        "creation_date": "2026-10-05",
+        "company": "Goldman Sachs",
+        "role": "Vice President (VP) \u2013 L2",
+        "yoe": 7,
+        "location": "India based",
+        "interview_exp": "N/A",
+        "base": 52.0,
+        "total": 52.0,
+        "mapped_role": "Vice President (VP) \u2013 L2",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8557148,
+        "creation_date": "2026-10-05",
+        "company": "Slice",
+        "role": "SDE-1 Backend",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 36.0,
+        "total": 36.0,
+        "mapped_role": "SDE-1 Backend",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8551252,
         "creation_date": "2026-10-02",
         "company": "Amazon",
