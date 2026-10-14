@@ -1,5 +1,18 @@
 [
     {
+        "id": 8559197,
+        "creation_date": "2026-10-06",
+        "company": "EPAM Systems",
+        "role": "Senior Software Engineer (SSE)",
+        "yoe": 5,
+        "location": "Hyderabad",
+        "interview_exp": "https://leetcode.com/discuss/post/8559791/epam-sse-interview-experience-by-anonymo-qxft/",
+        "base": 25.0,
+        "total": 26.0,
+        "mapped_role": "Senior Software Engineer (SSE)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8557929,
         "creation_date": "2026-10-05",
         "company": "Goldman Sachs",
