@@ -1,5 +1,18 @@
 [
     {
+        "id": 8569344,
+        "creation_date": "2026-10-12",
+        "company": "Bajaj finance",
+        "role": "Data Scientist",
+        "yoe": 2,
+        "location": "Pune",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 35.0,
+        "mapped_role": "Data Scientist",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8565206,
         "creation_date": "2026-10-10",
         "company": "Fampay",
