@@ -20,7 +20,7 @@ LAG_DAYS = config["app"]["lag_days"]
 load_dotenv()
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-OPENROUTER_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+OPENROUTER_MODEL = "nvidia/nemotron-3.5-super-vl:free"
 
 # Overload (503), rate limiting and network errors: the post should be retried on a later run.
 RETRYABLE_LLM_ERRORS = (

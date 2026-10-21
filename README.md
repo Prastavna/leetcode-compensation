@@ -173,7 +173,7 @@ min_total_offer = 3
 
 ### Data Processing
 - [x] **Automated data fetching** from LeetCode forums via GraphQL API
-- [x] **LLM-powered parsing** using OpenRouter (`nvidia/nemotron-3-super-120b-a12b:free`)
+- [x] **LLM-powered parsing** using OpenRouter (`nvidia/nemotron-3.5-super-vl:free`)
 - [x] **Smart data validation** with Pydantic models
 - [x] **Intelligent mapping** for companies, roles, and locations
 - [x] **Automatic cleanup** to maintain data quality and file sizes
