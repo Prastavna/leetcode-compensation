@@ -1,5 +1,18 @@
 [
     {
+        "id": 8572890,
+        "creation_date": "2026-10-14",
+        "company": "Microsoft",
+        "role": "SDE II",
+        "yoe": 3,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/8572881/microsoft-sde-2-interview-experience-3-y-c8by/",
+        "base": 33.0,
+        "total": 47.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8569344,
         "creation_date": "2026-10-12",
         "company": "Bajaj finance",
