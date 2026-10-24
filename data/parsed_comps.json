@@ -1,5 +1,18 @@
 [
     {
+        "id": 8575372,
+        "creation_date": "2026-10-16",
+        "company": "Zeta group",
+        "role": "Senior SDE (L3)",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 47.0,
+        "total": 58.0,
+        "mapped_role": "Senior SDE (L3)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8572890,
         "creation_date": "2026-10-14",
         "company": "Microsoft",
