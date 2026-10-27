@@ -1,5 +1,31 @@
 [
     {
+        "id": 8579812,
+        "creation_date": "2026-10-19",
+        "company": "Salesforce",
+        "role": "SDE-2/ MTS",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "https://leetcode.com/discuss/post/8564003/salesforce-sde-2-backend-mts-interview-e-blqc/",
+        "base": 39.0,
+        "total": 57.0,
+        "mapped_role": "SDE-2/ MTS",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8579709,
+        "creation_date": "2026-10-19",
+        "company": "Nokia",
+        "role": "Software Engineer 2",
+        "yoe": 4,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 19.0,
+        "total": 20.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8575372,
         "creation_date": "2026-10-16",
         "company": "Zeta group",
