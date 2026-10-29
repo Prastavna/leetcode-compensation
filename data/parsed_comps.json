@@ -1,5 +1,57 @@
 [
     {
+        "id": 8583028,
+        "creation_date": "2026-10-22",
+        "company": "Zscaler",
+        "role": "Software Engineer",
+        "yoe": 2,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 30.0,
+        "total": 30.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8583028,
+        "creation_date": "2026-10-22",
+        "company": "Groww",
+        "role": "Software Engineer",
+        "yoe": 2,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 35.0,
+        "total": 35.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8582955,
+        "creation_date": "2026-10-21",
+        "company": "Amazon",
+        "role": "Software Development Engineer II (SDE2)",
+        "yoe": 4,
+        "location": "Chennai/India",
+        "interview_exp": "N/A",
+        "base": 43.5,
+        "total": 62.2,
+        "mapped_role": "Software Development Engineer II (SDE2)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8582068,
+        "creation_date": "2026-10-21",
+        "company": "Ebay",
+        "role": "Staff Software Engineer \u2013 AI Platform",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 55.0,
+        "total": 85.0,
+        "mapped_role": "Staff Software Engineer \u2013 AI Platform",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8579812,
         "creation_date": "2026-10-19",
         "company": "Salesforce",
