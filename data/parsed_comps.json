@@ -1,5 +1,18 @@
 [
     {
+        "id": 8588248,
+        "creation_date": "2026-10-25",
+        "company": "Microsoft",
+        "role": "Consultant \u2013 .NET Full Stack & AI",
+        "yoe": 6,
+        "location": "Hyderabad/India",
+        "interview_exp": "N/A",
+        "base": 28.0,
+        "total": 28.0,
+        "mapped_role": "Consultant \u2013 .NET Full Stack & AI",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8585371,
         "creation_date": "2026-10-23",
         "company": "Qualcomm",
