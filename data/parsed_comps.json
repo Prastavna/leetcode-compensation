@@ -1,5 +1,31 @@
 [
     {
+        "id": 8589190,
+        "creation_date": "2026-10-26",
+        "company": "Uber",
+        "role": "Senior Software Engineer (L5a)",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 70.0,
+        "total": 115.0,
+        "mapped_role": "Senior Software Engineer (L5a)",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
+        "id": 8589190,
+        "creation_date": "2026-10-26",
+        "company": "Rippling",
+        "role": "Senior Software Engineer (L7)",
+        "yoe": 7,
+        "location": "Bangalore",
+        "interview_exp": "N/A",
+        "base": 90.0,
+        "total": 128.0,
+        "mapped_role": "Senior Software Engineer (L7)",
+        "mapped_yoe": "Senior (7-10)"
+    },
+    {
         "id": 8588248,
         "creation_date": "2026-10-25",
         "company": "Microsoft",
