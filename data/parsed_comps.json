@@ -1,5 +1,31 @@
 [
     {
+        "id": 8592521,
+        "creation_date": "2026-10-28",
+        "company": "Amazon",
+        "role": "Software Development Engineer II (SDE II, L5)",
+        "yoe": 3,
+        "location": "Hyderabad/India",
+        "interview_exp": "N/A",
+        "base": 43.0,
+        "total": 64.0,
+        "mapped_role": "Software Development Engineer II (SDE II, L5)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8592052,
+        "creation_date": "2026-10-28",
+        "company": "Kotak Mahindra Bank",
+        "role": "SDE 2",
+        "yoe": 3,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 22.0,
+        "total": 24.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8591103,
         "creation_date": "2026-10-27",
         "company": "Anz",
