@@ -1,5 +1,31 @@
 [
     {
+        "id": 8593768,
+        "creation_date": "2026-10-29",
+        "company": "Oracle",
+        "role": "Senior Application Software Engineer",
+        "yoe": 4,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 35.0,
+        "total": 35.0,
+        "mapped_role": "Senior Application Software Engineer",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8593653,
+        "creation_date": "2026-10-29",
+        "company": "EPAM Systems",
+        "role": "Jr Software Engineer",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 8.0,
+        "total": 8.0,
+        "mapped_role": "Jr Software Engineer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8592521,
         "creation_date": "2026-10-28",
         "company": "Amazon",
