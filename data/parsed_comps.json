@@ -1,5 +1,31 @@
 [
     {
+        "id": 8595149,
+        "creation_date": "2026-10-30",
+        "company": "Apple",
+        "role": "ICT3 (Software Engineer)",
+        "yoe": 4,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 32.0,
+        "total": 60.0,
+        "mapped_role": "ICT3 (Software Engineer)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8595149,
+        "creation_date": "2026-10-30",
+        "company": "Atlassian",
+        "role": "P40 (Software Engineer)",
+        "yoe": 4,
+        "location": "Remote/WFH",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 74.5,
+        "mapped_role": "P40 (Software Engineer)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8593768,
         "creation_date": "2026-10-29",
         "company": "Oracle",
