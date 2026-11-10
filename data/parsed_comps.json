@@ -1,5 +1,18 @@
 [
     {
+        "id": 8598912,
+        "creation_date": "2026-11-02",
+        "company": "Atlassian",
+        "role": "SDE2",
+        "yoe": 3,
+        "location": "Remote/WFH",
+        "interview_exp": "N/A",
+        "base": 47.0,
+        "total": 80.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8595149,
         "creation_date": "2026-10-30",
         "company": "Apple",
