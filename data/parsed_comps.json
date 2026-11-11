@@ -1,5 +1,31 @@
 [
     {
+        "id": 8600500,
+        "creation_date": "2026-11-03",
+        "company": "EPAM Systems",
+        "role": "Senior Software Engineer (A3)",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 48.0,
+        "total": 50.0,
+        "mapped_role": "Senior Software Engineer (A3)",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8600500,
+        "creation_date": "2026-11-03",
+        "company": "JP Morgan Chase",
+        "role": "Software Engineer III (Associate)",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 42.0,
+        "total": 47.8,
+        "mapped_role": "Associate",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8598912,
         "creation_date": "2026-11-02",
         "company": "Atlassian",
