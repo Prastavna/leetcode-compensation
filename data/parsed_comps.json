@@ -1,5 +1,18 @@
 [
     {
+        "id": 8608082,
+        "creation_date": "2026-11-10",
+        "company": "Wex inc",
+        "role": "SDE - 1",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 21.0,
+        "total": 31.0,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8604981,
         "creation_date": "2026-11-07",
         "company": "Walmart",
