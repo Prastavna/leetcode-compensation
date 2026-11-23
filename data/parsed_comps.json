@@ -1,5 +1,31 @@
 [
     {
+        "id": 8614019,
+        "creation_date": "2026-11-15",
+        "company": "Glance (inmobi)",
+        "role": "Applied Scientist I",
+        "yoe": 0,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 33.0,
+        "total": 65.0,
+        "mapped_role": "Applied Scientist I",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
+        "id": 8613508,
+        "creation_date": "2026-11-15",
+        "company": "Auxo ai",
+        "role": "AI Engineer",
+        "yoe": 0,
+        "location": "India",
+        "interview_exp": "N/A",
+        "base": 15.5,
+        "total": 17.82,
+        "mapped_role": "AI Engineer",
+        "mapped_yoe": "Entry (0-1)"
+    },
+    {
         "id": 8608082,
         "creation_date": "2026-11-10",
         "company": "Wex inc",
