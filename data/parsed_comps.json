@@ -1,5 +1,18 @@
 [
     {
+        "id": 8615175,
+        "creation_date": "2026-11-16",
+        "company": "Walmart",
+        "role": "SSE",
+        "yoe": 6,
+        "location": "Bangalore/India",
+        "interview_exp": "N/A",
+        "base": 45.0,
+        "total": 61.0,
+        "mapped_role": "SDE II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8614019,
         "creation_date": "2026-11-15",
         "company": "Glance (inmobi)",
