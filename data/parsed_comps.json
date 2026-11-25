@@ -1,5 +1,18 @@
 [
     {
+        "id": 8616120,
+        "creation_date": "2026-11-17",
+        "company": "Amazon",
+        "role": "SDE-2 (L5)",
+        "yoe": 4,
+        "location": "Hyderabad",
+        "interview_exp": "N/A",
+        "base": 41.0,
+        "total": 61.0,
+        "mapped_role": "SDE III",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8615175,
         "creation_date": "2026-11-16",
         "company": "Walmart",
