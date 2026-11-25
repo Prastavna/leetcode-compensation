@@ -148,6 +148,11 @@ leetcomp/
 - **Options**: Optional full data refresh after cleanup
 - **Use case**: Remove problematic or duplicate posts
 
+### Automatic Retry
+- **Trigger**: Completion of the data refresh, manual cleanup or site deploy workflows
+- **Process**: Re-runs the failed jobs when one of those workflows fails (transient API outages)
+- **Limit**: Up to 3 attempts per run, with a short wait before each retry
+
 ## Configuration
 
 The project uses `config.toml` for configuration:
