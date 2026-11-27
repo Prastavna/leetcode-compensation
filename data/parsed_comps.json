@@ -1,5 +1,18 @@
 [
     {
+        "id": 8617824,
+        "creation_date": "2026-11-19",
+        "company": "Salesforce",
+        "role": "SMTS",
+        "yoe": 5,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/8617812/salesforce-smts-bangalore-interview-expe-ik0b/",
+        "base": 50.0,
+        "total": 75.0,
+        "mapped_role": "MTS II",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8616120,
         "creation_date": "2026-11-17",
         "company": "Amazon",
