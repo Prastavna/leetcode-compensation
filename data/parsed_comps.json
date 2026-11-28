@@ -1,5 +1,31 @@
 [
     {
+        "id": 8619095,
+        "creation_date": "2026-11-20",
+        "company": "Amazon",
+        "role": "SDE-1",
+        "yoe": 2,
+        "location": "India",
+        "interview_exp": "https://leetcode.com/discuss/post/437082/amazon-behavioral-questions-leadership-p-kvhl/",
+        "base": 19.17,
+        "total": 42.7,
+        "mapped_role": "SDE I",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
+        "id": 8618733,
+        "creation_date": "2026-11-20",
+        "company": "ServiceNow",
+        "role": "Senior Software Engineer (IC3)",
+        "yoe": 6,
+        "location": "Bangalore",
+        "interview_exp": "https://leetcode.com/discuss/post/8618927/servicenow-sse-ic3-bengaluru-accepted-by-vuy2/",
+        "base": 40.0,
+        "total": 56.0,
+        "mapped_role": "Senior Software Engineer (IC3)",
+        "mapped_yoe": "Mid (2-6)"
+    },
+    {
         "id": 8617824,
         "creation_date": "2026-11-19",
         "company": "Salesforce",
